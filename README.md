@@ -1,2 +1,2 @@
-# android-projects
+# androidProjects
 All referent to Android projects.
