@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/libs/internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.1_ea04dae22badd9e4461c6932888219e34f1f1d96.jar" />
+    </item>
+    <item
+        jar="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-22.2.1_45acbc85c3b786d10f264a98e8affc74b9301a54.jar" />
+    </item>
+    <item
+        jar="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-22.2.1_29feda0b61e76ff094a46efc2cc2a3c132cc52f7.jar" />
+    </item>
+    <item
+        jar="/Users/Administrator/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.1/support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="/Users/Administrator/.jenkins/workspace/androidProjects/JenkinsTests/MyJenkinsApp/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.1_e5246cc2dbd6c194e6e951b456df60083afeea02.jar" />
+    </item>
+
+</items>
