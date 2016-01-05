@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Backgrounds -->
+    <color name="background_navbar">#1e1e1e</color>
+    <color name="background_layout">#282828</color>
+    <color name="background_grey_button">#303030</color>
+
+    <!-- Fonts -->
+    <color name="font_active_text">#ffffff</color>
+    <color name="font_inactive_text">#979797</color>
+    <color name="font_titles">#d8d8e1</color>
+
+    <!-- Details -->
+    <color name="orange">#db4a13</color>
+    <color name="blue">#00497f</color>
+
+    <!-- Android Defaults -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+</resources>
