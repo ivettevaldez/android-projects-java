@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dialog_loading_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/dialog_loading_body"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_centerInParent="true"
@@ -16,7 +18,7 @@
             android:orientation="vertical">
 
             <ProgressBar
-                android:id="@+id/progressBar2"
+                android:id="@+id/dialog_loading_progress_wheel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -24,7 +26,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/dialog_loading_txv_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -6,51 +6,42 @@
     tools:context="com.hunabsys.ubandapp.view.activities.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/login_imgv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:src="@mipmap/ic_login_internal" />
 
-    <LinearLayout
-        android:id="@+id/login_btn"
+    <Button
+        android:id="@+id/login_btn_internal"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:layout_alignParentLeft="true"
         android:layout_centerInParent="true"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:alpha=".80"
-        android:background="@drawable/btn_login_internal"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/login_txv_login"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/login_internal"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@color/font_active_text" />
-
-    </LinearLayout>
+        android:background="@drawable/btn_selector_login_internal"
+        android:text="@string/login_internal"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/font_active_text" />
 
     <LinearLayout
         android:id="@+id/login_btn_fb"
         android:layout_width="fill_parent"
         android:layout_height="45dp"
-        android:layout_below="@+id/login_btn"
+        android:layout_alignParentBottom="false"
+        android:layout_below="@+id/login_btn_internal"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
         android:alpha=".75"
-        android:background="@drawable/btn_login_fb"
+        android:background="@drawable/btn_selector_login_fb"
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/login_txv_facebook_login"
+            android:id="@+id/login_txv_fb"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -65,35 +56,29 @@
             android:layout_weight="1">
 
             <ImageView
-                android:id="@+id/imageView48"
+                android:id="@+id/login_imgv_icon_fb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="5dp"
-                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
                 android:src="@mipmap/ic_login_fb" />
         </FrameLayout>
 
     </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:id="@+id/login_frame_register"
+    <TextView
+        android:id="@+id/login_txv_sign_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/login_btn_fb"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="@string/login_register"
-            android:id="@+id/login_txv_register"
-            android:gravity="right"
-            android:textColor="@color/font_titles"
-            android:textSize="14sp"
-            android:layout_gravity="center" />
-    </FrameLayout>
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:gravity="right"
+        android:padding="15dp"
+        android:text="@string/login_sign_up"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/font_titles"
+        android:textSize="14sp" />
 
 </RelativeLayout>
