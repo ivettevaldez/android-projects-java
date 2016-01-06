@@ -2,11 +2,11 @@
 
     <string name="app_name">UBandCoach</string>
 
-    <!-- Standard Buttons -->
-    <string name="btn_send">SEND</string>
-    <string name="btn_cancel">CANCEL</string>
+    <!-- Buttons -->
+    <string name="btn_sign_up">Sign Up</string>
 
     <!-- Miscellaneous -->
+    <string name="text_fields_hint">+</string>
     <string name="loading">Loading…</string>
 
     <!-- SplashActivity -->
@@ -15,10 +15,10 @@
     <!-- LoginActivity -->
     <string name="login_internal">Login</string>
     <string name="login_fb">Login with</string>
-    <string name="login_register">Register</string>
+    <string name="login_sign_up">Sign Up</string>
 
     <!-- RegistrationActivity-->
-    <string name="title_activity_registration">REGISTRATION</string>
+    <string name="title_activity_registration">SIGN UP</string>
     <string name="registration_user_name">User Name</string>
     <string name="registration_email">E-mail</string>
     <string name="registration_pass">Password</string>
