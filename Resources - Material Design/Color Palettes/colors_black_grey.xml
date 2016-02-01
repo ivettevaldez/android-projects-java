@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="primary">#282828</color>
+    <color name="primary_dark">#1e1e1e</color>
+    <color name="primary_light">#333333</color>
+    <color name="accent">#00497f</color>
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#d6d6df</color>
+    <color name="icons">#ffffff</color>
+    <color name="divider">#414142</color>
+
+</resources>
