@@ -1,9 +1,0 @@
-<resources>
-
-    <string name="app_name">Multimedia App</string>
-    <string name="default_title_menu">TITLE</string>
-
-    <string name="menu_icon">Menu</string>
-    <string name="menu_icon_home">Dashboard</string>
-
-</resources>
