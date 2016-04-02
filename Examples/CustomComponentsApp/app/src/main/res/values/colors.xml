@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Custom palette -->
+    <color name="colorPrimaryDark">#222222</color>
+    <color name="colorPrimary">#333333</color>
+    <color name="colorAccent">#ffffff</color>
+
+    <color name="background_grey_light">#f0f0f0</color>
+    <color name="divider">#e6e6e6</color>
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#999999</color>
+
+</resources>
