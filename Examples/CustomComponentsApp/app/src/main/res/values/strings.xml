@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">Custom Components Example</string>
+
+    <!-- Defaults -->
+    <string name="default_item">Item</string>
+    <string name="default_zero">0</string>
+
+</resources>
