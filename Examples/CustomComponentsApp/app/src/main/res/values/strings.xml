@@ -6,4 +6,12 @@
     <string name="default_item">Item</string>
     <string name="default_zero">0</string>
 
+    <string-array name="headers">
+        <item>This is a row header</item>
+        <item>Another row header</item>
+        <item>This is a row header</item>
+        <item>This is a row header</item>
+        <item>This is a row header</item>
+    </string-array>
+
 </resources>

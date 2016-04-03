@@ -5,4 +5,50 @@
     android:layout_height="match_parent"
     tools:context="com.hunabsys.customcomponentsapp.MainActivity">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="com.hunabsys.customcomponentsapp.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:id="@+id/include_item_1"
+                layout="@layout/item_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/include_item_2"
+                layout="@layout/item_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/include_item_3"
+                layout="@layout/item_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                android:id="@+id/include_item_4"
+                layout="@layout/item_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <include
+                layout="@layout/item_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/include_item_5" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>
