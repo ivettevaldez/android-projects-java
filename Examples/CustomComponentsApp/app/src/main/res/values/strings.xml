@@ -9,9 +9,44 @@
     <string-array name="headers">
         <item>This is a row header</item>
         <item>Another row header</item>
-        <item>This is a row header</item>
-        <item>This is a row header</item>
-        <item>This is a row header</item>
+        <item>Header too</item>
+        <item>A header more</item>
+        <item>The Ultimate Header</item>
+    </string-array>
+
+    <string-array name="set_1">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="set_2">
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+    <string-array name="set_3">
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+
+    <string-array name="set_4">
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+
+    <string-array name="set_5">
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
     </string-array>
 
 </resources>
