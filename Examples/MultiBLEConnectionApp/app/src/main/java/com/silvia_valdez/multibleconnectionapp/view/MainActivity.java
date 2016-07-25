@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothGatt;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,27 +16,34 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.silvia_valdez.multibleconnectionapp.R;
+import com.silvia_valdez.multibleconnectionapp.ble.IMultiBLEAccelServiceDelegate;
 import com.silvia_valdez.multibleconnectionapp.ble.MultiBLEService;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IMultiBLEAccelServiceDelegate {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final int PERMISSION_LOCATION_REQUEST_CODE = 1001;
 
     private Context mContext;
     private MultiBLEService mMultiBleService;
+    private List<Map<String, String>> mDevicesData;
 
+    private ListView mDevicesListView;
+    private TextView mTextStatus;
     private Button mButtonScan;
     private Button mButtonDisconnect;
 
@@ -46,13 +54,11 @@ public class MainActivity extends AppCompatActivity {
 
         initVariables();
         checkForPermissions();
-//        addItemsToList();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
         // Enable Bluetooth Service if it's not enabled yet.
         if (mMultiBleService.getBluetoothAdapter() == null
                 || !mMultiBleService.getBluetoothAdapter().isEnabled()) {
@@ -72,7 +78,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-//        addItemsToList();
         mMultiBleService.disconnectFromDevices();
     }
 
@@ -80,40 +85,37 @@ public class MainActivity extends AppCompatActivity {
         mContext = MainActivity.this;
         mMultiBleService = new MultiBLEService(mContext);
 
+        mTextStatus = (TextView) findViewById(R.id.main_text_status);
         mButtonScan = (Button) findViewById(R.id.main_button_scan);
         mButtonScan.setOnClickListener(showAvailableDevices);
         mButtonDisconnect = (Button) findViewById(R.id.main_button_disconnect);
         mButtonDisconnect.setOnClickListener(disconnectFromDevices);
     }
 
-    private void addItemsToList() {
-        ListView devicesList = (ListView) findViewById(R.id.main_list_devices);
-        List<Map<String, String>> data = new ArrayList<>();
+    /*
+     * ListView with Item showing the device's name and mac address,
+     * and SubItem showing the accelerometer's x, y and z values.
+     * Parameter gatts is the list containing the connected devices.
+     */
+    private void addItemsToList(ArrayList<BluetoothGatt> gatts) {
+        mDevicesListView = (ListView) findViewById(R.id.main_list_devices);
+        mDevicesData = new ArrayList<>();
 
-        ArrayList<String> names = new ArrayList<>();
-        names.add("Device 1");
-        names.add("Device 2");
-        names.add("Device 3");
-
-        ArrayList<String> addresses = new ArrayList<>();
-        addresses.add("00:00:00:00");
-        addresses.add("00:00:00:00");
-        addresses.add("00:00:00:00");
-
-        for (int i = 0; i < names.size(); i++) {
+        for (int i = 0; i < gatts.size(); i++) {
             Map<String, String> values = new HashMap<>(2);
-            values.put("name", names.get(i));
-            values.put("address", addresses.get(i));
-            data.add(values);
+            values.put("name", String.format("%s - %s",
+                    gatts.get(i).getDevice().getName(), gatts.get(i).getDevice().getAddress()));
+            values.put("accelerometer", " ");   // Empty value until it's sensor is receiving data
+            mDevicesData.add(values);
         }
 
         SimpleAdapter adapter = new SimpleAdapter(this,
-                data,
+                mDevicesData,
                 android.R.layout.simple_list_item_2,
-                new String[]{"name", "address"},
+                new String[]{"name", "accelerometer"},
                 new int[]{android.R.id.text1, android.R.id.text2});
 
-        devicesList.setAdapter(adapter);
+        mDevicesListView.setAdapter(adapter);
     }
 
     private void checkForPermissions() {
@@ -122,9 +124,9 @@ public class MainActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSION_LOCATION_REQUEST_CODE);
-            setUpBLEService();
+            mMultiBleService.setupBluetoothConnection();
         } else {
-            setUpBLEService();
+            mMultiBleService.setupBluetoothConnection();
         }
     }
 
@@ -135,12 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 
-    private void setUpBLEService() {
-        mMultiBleService.setupBluetoothConnection();
-    }
-
-
-    private void showAvailableBands() {
+    private void showAvailableBleDevices() {
         String title = getResources().getString(R.string.dialog_title_select_devices);
         final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainActivity.this);
         dialogBuilder.setTitle(title);
@@ -149,10 +146,10 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<Integer> selectedItems = new ArrayList<>();
         ArrayList<String> devicesList = new ArrayList<>();
 
-        // Get the list of available INR-Bands
+        // Get the list of available devices
         for (int i = 0; i < mMultiBleService.getBluetoothDevices().size(); i++) {
             BluetoothDevice device = mMultiBleService.getBluetoothDevices().valueAt(i);
-            devicesList.add(device.getName() + " " + device.getAddress());
+            devicesList.add(String.format("%s %s", device.getName(), device.getAddress()));
         }
         CharSequence[] devicesArray = devicesList.toArray(new CharSequence[devicesList.size()]);
 
@@ -171,22 +168,23 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).setPositiveButton(getString(R.string.action_connect),
                 new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                // Save the selected items' references
-                ArrayList<BluetoothDevice> selectedDevices = new ArrayList<>();
-                for (int i = 0; i < selectedItems.size(); i++) {
-                    selectedDevices.add(mMultiBleService.getBluetoothDevices()
-                            .valueAt(selectedItems.get(i)));
-                }
-                Log.i(TAG, String.format("Selected devices: %s", selectedDevices.toString()));
-                // Connect with the INR-Bands
-                mMultiBleService.connectToDevices(selectedDevices);
-                mButtonScan.setEnabled(false);
-                mButtonDisconnect.setEnabled(true);
-                dialog.dismiss();
-            }
-        }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Save the selected items' references
+                        ArrayList<BluetoothDevice> selectedDevices = new ArrayList<>();
+                        for (int i = 0; i < selectedItems.size(); i++) {
+                            selectedDevices.add(mMultiBleService.getBluetoothDevices()
+                                    .valueAt(selectedItems.get(i)));
+                        }
+                        Log.i(TAG, String.format("Selected devices: %s", selectedDevices.toString()));
+
+                        // Connect with the devices
+                        mMultiBleService.connectToDevices(selectedDevices);
+                        mButtonScan.setEnabled(false);
+                        mButtonDisconnect.setEnabled(true);
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
@@ -215,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     mMultiBleService.stopScan();
                     progressDialog.dismiss();
-                    showAvailableBands();
+                    showAvailableBleDevices();
                 }
             });
         }
@@ -229,13 +227,54 @@ public class MainActivity extends AppCompatActivity {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
-//                    addItemsToList();
+                    // Wait 200 milliseconds until accelerometer's is not sending more data
+                    mDevicesData.clear();
+                    ((BaseAdapter) mDevicesListView.getAdapter()).notifyDataSetChanged();
                 }
-            }, 300);
+            }, 200);
 
-            v.setEnabled(false);
+            mButtonDisconnect.setEnabled(false);
             mButtonScan.setEnabled(true);
+            mTextStatus.setText(getString(R.string.no_connected_devices));
+            mTextStatus.setTextColor(getResources().getColor(R.color.red));
         }
     };
 
+    @Override
+    public void updateAccelerometerValues(BluetoothGatt gatt, int accelX, int accelY, int accelZ,
+                                          int gyroX, int gyroY, int gyroZ) {
+        Log.d(TAG, String.format("DEVICE: %s ACCELEROMETER: X: %d Y: %d Z: %d",
+                gatt.getDevice(), accelX, accelY, accelZ));
+
+        Log.d(TAG, String.format("DEVICE: %s GYROSCOPE: X: %d Y: %d Z: %d",
+                gatt.getDevice(), gyroX, gyroY, gyroZ));
+
+        if (mMultiBleService.getSelectedDevices() != null) {
+            // Get the position of the device in the connected devices' list
+            int position = mMultiBleService.getSelectedDevices().indexOf(gatt.getDevice());
+
+            // Update the accelerometer's value in the device's data and notify the listView adapter.
+            mDevicesData.get(position).put("accelerometer", String.format(Locale.getDefault(),
+                    "Accel. values: %d, %d, %d", accelX, accelY, accelZ));
+            ((BaseAdapter) mDevicesListView.getAdapter()).notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    public void updateConnectedDevices(ArrayList<BluetoothGatt> gatts) {
+        // Update the number of connected devices
+        String message;
+        if (gatts.size() == 1) {
+            message = getString(R.string.connected_device);
+        } else {
+            message = getString(R.string.connected_devices);
+        }
+
+        mTextStatus.setText(String.format(Locale.getDefault(),
+                "%d %s", gatts.size(), message));
+        mTextStatus.setTextColor(getResources().getColor(R.color.green));
+
+        // Add the devices to the listView
+        addItemsToList(gatts);
+    }
 }
