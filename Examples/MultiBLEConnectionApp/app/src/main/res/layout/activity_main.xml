@@ -41,7 +41,7 @@
         android:layout_marginBottom="14dp"
         android:layout_marginTop="16dp"
         android:gravity="center_horizontal"
-        android:text="@string/connected_devices"
+        android:text="@string/no_connected_devices"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/red" />
 
