@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MultiBLE Connection</string>
+
+    <string name="connected_devices">No connected devices</string>
+    <string name="dialog_title_inr_scan">MultiBLE Scan</string>
+    <string name="dialog_title_select_devices">Select devices</string>
+
+    <!-- Actions -->
+    <string name="action_scan">SCAN</string>
+    <string name="action_connect">Connect</string>
+    <string name="action_disconnect">DISCONNECT</string>
+    <string name="action_scanning_devices">Scanning for devices…</string>
+    <string name="action_new_ble_device">New LE Device found:  </string>
+
+    <!-- Errors -->
+    <string name="error_no_ble_support">No LE support.</string>
+    <string name="error_not_valid_device">Not Valid Device: </string>
+    <string name="error_null_device">NULL Device</string>
+</resources>
