@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">MultiBLE Connection</string>
 
-    <string name="connected_devices">No connected devices</string>
+    <string name="no_connected_devices">No connected devices</string>
+    <string name="connected_device">Connected device</string>
+    <string name="connected_devices">Connected devices</string>
     <string name="dialog_title_inr_scan">MultiBLE Scan</string>
     <string name="dialog_title_select_devices">Select devices</string>
 

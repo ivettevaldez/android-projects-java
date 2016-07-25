@@ -20,44 +20,30 @@ import java.util.ArrayList;
  * and Data Receiver functionality for multiple devices.
  * Created by silvia.valdez@hunabsys.com on 20/07/16.
  */
-public class MultiBLEService implements BluetoothAdapter.LeScanCallback {
+public class MultiBLEService implements BluetoothAdapter.LeScanCallback,
+        IMultiBLEAccelDataReceiverDelegate {
 
     private static final String TAG = MultiBLEService.class.getSimpleName();
 
     private Context mContext;
     private Activity mActivity;
+    private IMultiBLEAccelServiceDelegate mDelegate;
 
     // BLE Components
     private BluetoothAdapter mBluetoothAdapter;
-
     private MultiBLECallback mMultiBleCallback;
     private MultiBLEHandler mMultiBleHandler;
 
     private ArrayList<BluetoothGatt> mConnectedGatts;
-    private ArrayList<BluetoothDevice> mUBandSelectedDevices;
+    private ArrayList<BluetoothDevice> mSelectedDevices;
     private SparseArray<BluetoothDevice> mBluetoothDevices;
 
-    /**
-     * Start scan convenient callback class.
-     */
-    public abstract class StartScanCallback implements Runnable {
-        @Override
-        public void run() {
-            stopScan();
-            callback();
-        }
 
-        public abstract void callback();
-    }
-
-    /**
-     * MultiBLEService context's constructor.
-     *
-     * @param context the context.
-     */
+    // MultiBLEService context's constructor.
     public MultiBLEService(Context context) {
         this.mContext = context;
         this.mActivity = (Activity) context;
+        this.mDelegate = (IMultiBLEAccelServiceDelegate) context;
         this.mConnectedGatts = new ArrayList<>();
     }
 
@@ -76,34 +62,27 @@ public class MultiBLEService implements BluetoothAdapter.LeScanCallback {
         }
     }
 
-    /**
-     * Connect to devices.
-     *
-     * @param devices the array list containing the ble devices.
-     */
+    // Method to connect to devices.
     public void connectToDevices(ArrayList<BluetoothDevice> devices) {
-        mUBandSelectedDevices = devices;
+        mSelectedDevices = devices;
         for (BluetoothDevice device : devices) connectToDevice(device);
+        mDelegate.updateConnectedDevices(mConnectedGatts);
     }
 
-    /**
-     * Connect to device.
-     */
+    // Method to connect to a specific device.
     public void connectToDevice(BluetoothDevice device) {
         if (null != device) {
             Log.e(TAG, String.format("Connecting to %s %s...",
                     device.getName(), device.getAddress()));
 
             mConnectedGatts.add(device.connectGatt(mContext, false, mMultiBleCallback));
-            mMultiBleHandler.sendMessage(Message.obtain(null, IMessageType.PROGRESS,
+            mMultiBleHandler.sendMessage(Message.obtain(null, IMultiBLEMessageType.PROGRESS,
                     String.format("Connecting to %s %s...",
                             device.getName(), device.getAddress())));
         }
     }
 
-    /**
-     * Disconnect from devices.
-     */
+    // Disconnect from all devices.
     public void disconnectFromDevices() {
         if (!mConnectedGatts.isEmpty()) {
             for (BluetoothGatt gatt : mConnectedGatts) gatt.disconnect();
@@ -111,48 +90,17 @@ public class MultiBLEService implements BluetoothAdapter.LeScanCallback {
         }
     }
 
-    /**
-     * Init setup and start bluetooth connection.
-     */
-    public void initBluetoothConnection() {
-        setupBluetoothConnection();
-        startScan();
-    }
-
-    /**
-     * Setup bluetooth connection.
-     */
+    // Setup bluetooth connection.
     public void setupBluetoothConnection() {
         ProgressDialog messageNotifier = new ProgressDialog(mContext);
         mBluetoothDevices = new SparseArray<>();
-        mMultiBleHandler = new MultiBLEHandler(messageNotifier);
+        mMultiBleHandler = new MultiBLEHandler(messageNotifier, this);
         mMultiBleCallback = new MultiBLECallback(mMultiBleHandler);
         mBluetoothAdapter = ((BluetoothManager)
                 mContext.getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
     }
 
-    /**
-     * Start scan, followed by stop scan and connect to default device.
-     */
-    public void startScan() {
-        startScan(new StartScanCallback() {
-            @Override
-            public void run() {
-                stopScanAndConnect();
-            }
-
-            @Override
-            public void callback() {
-
-            }
-        });
-    }
-
-    /**
-     * Start scan with a callback at the end.
-     *
-     * @param callback the callback.
-     */
+    // Start scan with a callback at the end.
     public void startScan(Runnable callback) {
         Log.e(TAG, mContext.getString(R.string.action_scanning_devices));
         getBluetoothDevices().clear();
@@ -161,14 +109,7 @@ public class MultiBLEService implements BluetoothAdapter.LeScanCallback {
         mMultiBleHandler.postDelayed(callback, 3000L);
     }
 
-    private void stopScanAndConnect() {
-        stopScan();
-        connectToDevices(mUBandSelectedDevices);
-    }
-
-    /**
-     * Stop scan.
-     */
+    // Stop scan.
     public void stopScan() {
         getBluetoothAdapter().stopLeScan(this);
         mActivity.setProgressBarIndeterminateVisibility(false);
@@ -182,8 +123,17 @@ public class MultiBLEService implements BluetoothAdapter.LeScanCallback {
         return mBluetoothDevices;
     }
 
-    public ArrayList<BluetoothDevice> getUBandDevices() {
-        return mUBandSelectedDevices;
+    public ArrayList<BluetoothDevice> getSelectedDevices() {
+        return mSelectedDevices;
+    }
+
+
+    @Override
+    public void updateAccelerometer(BluetoothGatt gatt, int accelX, int accelY, int accelZ,
+                                    int gyroX, int gyroY, int gyroZ) {
+        if (mDelegate != null) {
+            mDelegate.updateAccelerometerValues(gatt, accelX, accelY, accelZ, gyroX, gyroY, gyroZ);
+        }
     }
 
 }
