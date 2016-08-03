@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="background">#ededed</color>
-    <color name="red">#ee0000</color>
-    <color name="green">#00aa00</color>
-
-    <!-- Android defaults -->
+    <color name="colorPrimaryLight">#4F63B6</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
