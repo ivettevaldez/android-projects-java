@@ -51,7 +51,7 @@ public class MultiBLEService implements BluetoothAdapter.LeScanCallback,
     public void onLeScan(BluetoothDevice device, int rssi, byte[] scanRecord) {
         if (device != null) {
             if (device.getName() != null) {
-                Log.e(TAG, mContext.getString(R.string.action_new_ble_device)
+                Log.e(TAG, mContext.getString(R.string.new_ble_device)
                         + device.getName() + " @ " + rssi);
                 getBluetoothDevices().put(device.hashCode(), device);
             } else {

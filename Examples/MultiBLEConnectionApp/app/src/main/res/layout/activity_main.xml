@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context=".view.MainActivity">
+    tools:context=".view.MainActivity"
+    android:background="@color/background">
 
     <Button
         android:id="@+id/main_button_scan"
@@ -26,11 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
+        android:enabled="false"
         android:text="@string/action_disconnect"
         android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
         android:textSize="16sp"
-        android:textStyle="bold"
-        android:enabled="false" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/main_text_status"
