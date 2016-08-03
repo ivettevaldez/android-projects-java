@@ -105,7 +105,8 @@ public class MainActivity extends AppCompatActivity implements IMultiBLEAccelSer
             Map<String, String> values = new HashMap<>(2);
             values.put("name", String.format("%s - %s",
                     gatts.get(i).getDevice().getName(), gatts.get(i).getDevice().getAddress()));
-            values.put("accelerometer", " ");   // Empty value until it's sensor is receiving data
+            // Empty value for accelerometer until it's sensor is receiving data
+            values.put("accelerometer", "Accelerometer not available");
             mDevicesData.add(values);
         }
 
