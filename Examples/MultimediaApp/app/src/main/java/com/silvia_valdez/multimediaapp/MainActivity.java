@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         if (navigationView != null) {
+            navigationView.getMenu().getItem(0).setChecked(true);
             navigationView.setNavigationItemSelectedListener(this);
         }
 
@@ -175,10 +176,15 @@ public class MainActivity extends AppCompatActivity
                     });
                 } catch (Exception e) {
                     e.printStackTrace();
-                    mDialog.dismiss();
-                    Toast.makeText(getApplicationContext(),
-                            "Failed to connect with the server",
-                            Toast.LENGTH_LONG).show();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mDialog.dismiss();
+                            Toast.makeText(getApplicationContext(),
+                                    "Failed to connect with the server",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
                 }
             }
         }).start();
