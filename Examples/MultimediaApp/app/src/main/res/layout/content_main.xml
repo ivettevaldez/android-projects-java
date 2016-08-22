@@ -5,26 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.silvia_valdez.multimediaapp.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main"
+    android:id="@+id/main_layout"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Video from URL example"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:gravity="center"
-        android:id="@+id/textView2" />
+        android:id="@+id/main_text_title"
+        android:text="@string/main_title" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_image_replay"
+        android:src="@mipmap/ic_replay_dark"
+        android:layout_below="@+id/main_text_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:visibility="invisible"
+        android:contentDescription="@string/main_replay" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/textView2"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_text_title"
         android:layout_marginTop="10dp"
         android:visibility="visible"
         android:id="@+id/main_frame">
@@ -32,8 +44,7 @@
         <VideoView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/videoView"
-            android:layout_below="@+id/textView2"
+            android:id="@+id/main_video_view"
             android:visibility="visible"
             android:background="@android:color/transparent" />
     </FrameLayout>
