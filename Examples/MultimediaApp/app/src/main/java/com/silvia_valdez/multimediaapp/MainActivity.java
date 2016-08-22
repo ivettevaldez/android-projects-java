@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -30,9 +32,14 @@ public class MainActivity extends AppCompatActivity
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private static final String GOOGLE_DRIVE_URL
-            = "https://drive.google.com/file/d/0Bz78-shpGme_N0NXencyMkVTcjA/preview";
+            = "https://drive.google.com/file/d/0B_yxRIPFWs-KLU5KWlk0YkxUU0E/view?usp=sharing";
+    private static final String POSITION = "POSITION";
+
+    private int mPosition = 0;
 
     private VideoView mVideoView;
+    private ImageView mImageReplay;
+    private FrameLayout mFrame;
     private ProgressDialog mDialog;
 
     @Override
@@ -44,7 +51,12 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this,
+                drawer,
+                toolbar,
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
+
         if (drawer != null) {
             drawer.setDrawerListener(toggle);
         }
@@ -59,7 +71,8 @@ public class MainActivity extends AppCompatActivity
         /**
          * Non generated methods
          **/
-        initVariables();
+        initViews();
+        addListenersToViews();
         downloadUrl(GOOGLE_DRIVE_URL);
     }
 
@@ -114,36 +127,97 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Use onSaveInstanceState to save the play position of the video.
+        savedInstanceState.putInt(POSITION, mPosition);
+        mVideoView.pause();
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Play the video from the saved position.
+        mPosition = savedInstanceState.getInt(POSITION);
+        mVideoView.seekTo(mPosition);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Use onSaveInstanceState to save the play position of the video.
+        mPosition = mVideoView.getCurrentPosition();
+    }
+
+
     /**
      * METHODS.
      */
-    private void initVariables() {
-        // Set a ProgressDialog to show the app status
-        mDialog = ProgressDialog.show(this, "", "Downloading URL...", true);
-
-        // This frame is used to hide the VideoView until it's prepared to show the video.
-        final FrameLayout frame = (FrameLayout) findViewById(R.id.main_frame);
-        if (frame != null) {
-            frame.setVisibility(View.INVISIBLE);
+    private void initViews() {
+        mImageReplay = (ImageView) findViewById(R.id.main_image_replay);
+        if (mImageReplay != null) {
+            mImageReplay.setVisibility(View.INVISIBLE);
         }
 
-        mVideoView = (VideoView) findViewById(R.id.videoView);
+        // This frame is used to hide the VideoView until it's prepared to show the video.
+        mFrame = (FrameLayout) findViewById(R.id.main_frame);
+        if (mFrame != null) {
+            mFrame.setVisibility(View.INVISIBLE);
+        }
+
+        // Create multimedia controls.
+        MediaController mediaController = new MediaController(this);
+
+        mVideoView = (VideoView) findViewById(R.id.main_video_view);
         if (mVideoView != null) {
-            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    // When video is prepared to show, dismiss the ProgressDialog and show the frame.
-                    if (mDialog.isShowing()) mDialog.dismiss();
-                    if (frame != null) {
-                        frame.setVisibility(View.VISIBLE);
-                    }
-                }
-            });
+            mVideoView.setMediaController(mediaController);
+            mediaController.setAnchorView(mVideoView);
         }
     }
 
+    private void addListenersToViews() {
+        mImageReplay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                downloadUrl(GOOGLE_DRIVE_URL);
+            }
+        });
+
+        mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                // When video is prepared to show, dismiss the ProgressDialog and show the frame.
+                if (mDialog.isShowing()) mDialog.dismiss();
+                if (mFrame != null) {
+                    mFrame.setVisibility(View.VISIBLE);
+                }
+
+                // Play the video on a loop (on repeat).
+                mediaPlayer.setLooping(true);
+
+                if (mPosition == 0) {
+                    // If had a position saved on savedInstanceState, the video should start there.
+                    mVideoView.start();
+                } else {
+                    // If we had the activity "resumed", the video would be put on pause.
+                    mVideoView.pause();
+                }
+            }
+        });
+
+        mVideoView.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mp, int what, int extra) {
+                mDialog.dismiss();
+                mImageReplay.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
+    }
+
     private void initVideoView(String downloadedUrl) {
-        mDialog.setMessage("Starting video...");
+        mDialog.setMessage(getString(R.string.action_start_video));
         Uri uri = Uri.parse(downloadedUrl);
 
         if (mVideoView != null) {
@@ -153,6 +227,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void downloadUrl(final String strUrl) {
+        // Set a ProgressDialog to show the app status
+        mDialog = ProgressDialog.show(this, "", getString(R.string.action_downloading_url), true);
+
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -165,7 +242,7 @@ public class MainActivity extends AppCompatActivity
                     connection.setDoInput(true);
                     connection.connect();
                     InputStream inputStream = connection.getInputStream();
-                    final String downloadedUrl = readIt(inputStream);
+                    final String downloadedUrl = readInputStream(inputStream);
                     Log.d(TAG, String.format("New URL: %s", downloadedUrl));
 
                     runOnUiThread(new Runnable() {
@@ -181,8 +258,10 @@ public class MainActivity extends AppCompatActivity
                         public void run() {
                             mDialog.dismiss();
                             Toast.makeText(getApplicationContext(),
-                                    "Failed to connect with the server",
+                                    R.string.error_failed_connecting,
                                     Toast.LENGTH_LONG).show();
+
+                            mImageReplay.setVisibility(View.VISIBLE);
                         }
                     });
                 }
@@ -190,7 +269,7 @@ public class MainActivity extends AppCompatActivity
         }).start();
     }
 
-    public String readIt(InputStream stream) throws IOException {
+    public String readInputStream(InputStream stream) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(stream, "UTF-8"));
         StringBuilder stringBuilder = new StringBuilder();
         String line;
