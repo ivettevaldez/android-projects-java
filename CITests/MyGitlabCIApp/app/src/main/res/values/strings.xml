@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">MyGitlabCIApp</string>
+
+    <string name="main_hello">Hello</string>
+    <string name="main_say_hello">Say hello!</string>
+    <string name="main_hint_type_name">Type your name…</string>
+
 </resources>

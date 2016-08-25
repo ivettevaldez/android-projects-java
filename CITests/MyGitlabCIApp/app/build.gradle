@@ -10,6 +10,9 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
+
+        // For Instrumentation Tests
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -17,14 +20,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
 }
 
 dependencies {
+    // App's dependencies, including test
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.1.1'
-
     // Required for Unit Tests -- JUnit 4 framework
     testCompile 'junit:junit:4.12'
-    // Optional -- Mockito framework
+    // Optional for Unit Tests -- Mockito framework
     testCompile 'org.mockito:mockito-core:1.10.19'
+
+    // Testing-only dependencies (Instrumentation Tests)
+    androidTestCompile 'com.android.support:support-annotations:24.1.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }
