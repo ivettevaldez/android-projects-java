@@ -1,4 +1,4 @@
-package silvia_valdez.mygitlabciapp;
+package silviavaldez.mygitlabciapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

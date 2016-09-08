@@ -1,4 +1,4 @@
-package silvia_valdez.mygitlabciapp;
+package silviavaldez.mygitlabciapp;
 
 /**
  * Simple calculator class for common arithmetic operations.

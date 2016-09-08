@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
+apply plugin: 'checkstyle'
 
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        applicationId "silvia_valdez.mygitlabciapp"
+        applicationId "silviavaldez.mygitlabciapp"
         minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
@@ -24,6 +25,17 @@ android {
     packagingOptions {
         exclude 'LICENSE.txt'
     }
+}
+
+task checkstyle(type: Checkstyle) {
+    configFile = rootProject.file('config/checkstyle-hard.xml')
+
+    source 'src/main/java'
+    include '**/*.java'
+    exclude '**/gen/**'
+
+    // Empty classpath
+    classpath = files()
 }
 
 dependencies {
