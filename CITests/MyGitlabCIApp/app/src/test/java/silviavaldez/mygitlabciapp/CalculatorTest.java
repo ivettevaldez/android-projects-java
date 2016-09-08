@@ -1,9 +1,9 @@
-package silvia_valdez.mygitlabciapp;
+package silviavaldez.mygitlabciapp;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 
 /**
  * Simple Test class for the Calculator.java class.

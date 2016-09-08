@@ -1,8 +1,8 @@
-package silvia_valdez.mygitlabciapp;
+package silviavaldez.mygitlabciapp;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.

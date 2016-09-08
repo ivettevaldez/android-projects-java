@@ -1,4 +1,4 @@
-package silvia_valdez.mygitlabciapp;
+package silviavaldez.mygitlabciapp;
 
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
