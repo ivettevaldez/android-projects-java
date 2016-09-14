@@ -5,4 +5,23 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- Login Activity -->
+    <string name="login_title">Get started signing in!</string>
+    <string name="login_user">User</string>
+    <string name="login_password">Password</string>
+    <string name="login_go">Go</string>
+
+
+    <!-- Register User Activity -->
+    <string name="register_user_title">Sign In</string>
+    <string name="register_user_name">Name</string>
+    <string name="register_user_last_name">Last Name</string>
+    <string name="register_user_phone">Phone</string>
+    <string name="register_user_register">Register</string>
+
+    <string name="register_user_hint_name">Type your name(s)</string>
+    <string name="register_user_hint_last_name">…Now your last name</string>
+    <string name="register_user_hint_phone">666-666-666</string>
+
 </resources>
