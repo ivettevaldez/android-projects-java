@@ -13,8 +13,9 @@
     <string name="login_go">Go</string>
 
 
-    <!-- Register User Activity -->
-    <string name="register_user_title">Sign In</string>
+    <!-- MainActivity -->
+    <string name="main_title">Users logged in:</string>
+
     <string name="register_user_name">Name</string>
     <string name="register_user_last_name">Last Name</string>
     <string name="register_user_phone">Phone</string>
@@ -22,6 +23,6 @@
 
     <string name="register_user_hint_name">Type your name(s)</string>
     <string name="register_user_hint_last_name">…Now your last name</string>
-    <string name="register_user_hint_phone">666-666-666</string>
+    <string name="register_user_hint_phone">666–666–666</string>
 
 </resources>
