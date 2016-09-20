@@ -11,11 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.silviavaldez.gettingstartedapp.MainActivity"
-    tools:showIn="@layout/app_bar_main">
+    tools:showIn="@layout/app_bar_main" android:id="@+id/main_layout">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView2"/>
+        android:text="@string/main_title"
+        android:id="@+id/main_text_title" android:textSize="18sp" android:textStyle="bold"/>
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_list_users" android:layout_below="@+id/main_text_title" android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"/>
 </RelativeLayout>
