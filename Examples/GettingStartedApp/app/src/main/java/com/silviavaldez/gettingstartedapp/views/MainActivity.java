@@ -1,4 +1,4 @@
-package com.silviavaldez.gettingstartedapp;
+package com.silviavaldez.gettingstartedapp.views;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.silviavaldez.gettingstartedapp.R;
 
 import java.util.ArrayList;
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity
                 mArrayUsers);
         mListUsers.setAdapter(adapter);
 
-        Toast.makeText(mContext, user + " - " + pass, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, user + " - " + pass, Toast.LENGTH_SHORT).show();
     }
 
     private void saveSession(String name, String pass) {
@@ -127,7 +128,15 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            SharedPreferences.Editor editor = getSharedPreferences(PREF_USER_DATA, MODE_PRIVATE).edit();
+            editor.clear();
+            editor.apply();
+
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
             return true;
         }
 

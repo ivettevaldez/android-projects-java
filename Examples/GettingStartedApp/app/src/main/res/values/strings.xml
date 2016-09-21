@@ -4,7 +4,12 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_processing">Processing…</string>
+
+    <!-- Errors -->
+    <string name="error_standard_msg">Internal server error</string>
+    <string name="error_no_internet_connection">No network available</string>
 
     <!-- Login Activity -->
     <string name="login_title">Get started signing in!</string>
