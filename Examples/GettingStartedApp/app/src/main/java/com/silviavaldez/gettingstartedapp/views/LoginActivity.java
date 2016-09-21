@@ -106,13 +106,18 @@ public class LoginActivity extends AppCompatActivity implements ILoginServiceDel
     }
 
     @Override
-    public void onLoginSuccess(boolean isLoggedIn) {
-        if (isLoggedIn) {
-            mProgressDialog.dismiss();
-            goToMainActivity(mUser, mPassword);
-        } else {
-            Snackbar.make(mParentView, "Permission denied", Snackbar.LENGTH_SHORT).show();
-        }
+    public void onLoginSuccess(final boolean isLoggedIn) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (isLoggedIn) {
+                    mProgressDialog.dismiss();
+                    goToMainActivity(mUser, mPassword);
+                } else {
+                    Snackbar.make(mParentView, "Permission denied", Snackbar.LENGTH_INDEFINITE).show();
+                }
+            }
+        });
     }
 
     @Override
