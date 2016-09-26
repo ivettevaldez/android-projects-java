@@ -7,8 +7,8 @@ import android.util.Log;
 
 import com.silviavaldez.gettingstartedapp.BuildConfig;
 
-import org.json.JSONObject;
 import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
@@ -63,10 +63,11 @@ public class HttpClientService {
         try {
             int status = connection.getResponseCode();
 
-            if (status >= HttpURLConnection.HTTP_BAD_REQUEST)
+            if (status >= HttpURLConnection.HTTP_BAD_REQUEST) {
                 inputStream = new BufferedInputStream(connection.getErrorStream());
-            else
+            } else {
                 inputStream = new BufferedInputStream(connection.getInputStream());
+            }
 
             response = IOUtils.toString(inputStream, "UTF-8");
 

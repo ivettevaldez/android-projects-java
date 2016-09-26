@@ -14,8 +14,8 @@ import android.widget.LinearLayout;
 
 import com.silviavaldez.gettingstartedapp.R;
 import com.silviavaldez.gettingstartedapp.services.HttpClientService;
-import com.silviavaldez.gettingstartedapp.services.ILoginServiceDelegate;
 import com.silviavaldez.gettingstartedapp.services.LoginService;
+import com.silviavaldez.gettingstartedapp.services.delegates.ILoginServiceDelegate;
 
 public class LoginActivity extends AppCompatActivity implements ILoginServiceDelegate {
 
