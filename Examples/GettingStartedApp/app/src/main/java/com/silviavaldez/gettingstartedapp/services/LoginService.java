@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.silviavaldez.gettingstartedapp.R;
+import com.silviavaldez.gettingstartedapp.services.delegates.ILoginServiceDelegate;
 
 import org.json.JSONException;
 import org.json.JSONObject;

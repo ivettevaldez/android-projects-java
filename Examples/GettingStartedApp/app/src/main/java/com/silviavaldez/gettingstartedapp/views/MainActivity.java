@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,8 +20,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.silviavaldez.gettingstartedapp.R;
+import com.silviavaldez.gettingstartedapp.daos.UserDao;
+import com.silviavaldez.gettingstartedapp.datamodels.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +36,10 @@ public class MainActivity extends AppCompatActivity
 
     private Context mContext;
     private ListView mListUsers;
+    private DrawerLayout mDrawerLayout;
     private ArrayList<String> mArrayUsers;
+
+    private UserDao mUserDao;
 
 
     @Override
@@ -72,17 +79,24 @@ public class MainActivity extends AppCompatActivity
     private void initVariables() {
         mContext = getApplicationContext();
         mListUsers = (ListView) findViewById(R.id.main_list_users);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mArrayUsers = new ArrayList<>();
+
+        mUserDao = new UserDao(mContext);
     }
 
+    /**
+     * SHARED PREFERENCES
+     */
     private void showExtras() {
         Bundle extras = this.getIntent().getExtras();
-        String user = extras.getString(LoginActivity.EXTRA_USER);
+        String name = extras.getString(LoginActivity.EXTRA_USER);
         String pass = extras.getString(LoginActivity.EXTRA_PASS);
 
-        saveSession(user, pass);
+        saveSession(name, pass);    // Shared Preferences
+        persistUser(name, pass);    // Realm
 
-        mArrayUsers.add(user);
+        mArrayUsers.add(name);
         mArrayUsers.add("Karen");
         mArrayUsers.add("Mano");
         mArrayUsers.add("Jorge");
@@ -92,7 +106,7 @@ public class MainActivity extends AppCompatActivity
                 mArrayUsers);
         mListUsers.setAdapter(adapter);
 
-//        Toast.makeText(mContext, user + " - " + pass, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, name + " - " + pass, Toast.LENGTH_SHORT).show();
     }
 
     private void saveSession(String name, String pass) {
@@ -103,6 +117,40 @@ public class MainActivity extends AppCompatActivity
         editor.apply();
     }
 
+    /**
+     * PERSISTENCE
+     *
+     * @param name User name
+     * @param pass User password
+     */
+    private void persistUser(String name, String pass) {
+        User user;
+        if ((user = mUserDao.getUserByName(name)) == null) {
+            user = new User();
+            user.setId(mUserDao.getLastId());
+            user.setCreatedAt(new Date());
+        }
+        user.setName(name);
+        user.setPassword(pass);
+
+        mUserDao.createOrUpdate(user);
+        showSavedData(name);
+    }
+
+    private void showSavedData(String name) {
+        User user;
+        if ((user = mUserDao.getUserByName(name)) != null) {
+            String userData = String.format("%s - %s - %s", user.getName(), user.getPassword(), user.getCreatedAt());
+            Snackbar.make(mDrawerLayout, userData, Snackbar.LENGTH_LONG).show();
+        } else {
+            Snackbar.make(mDrawerLayout, "No user found", Snackbar.LENGTH_SHORT).show();
+        }
+    }
+
+
+    /**
+     * INTERFACES IMPLEMENTATIONS
+     */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

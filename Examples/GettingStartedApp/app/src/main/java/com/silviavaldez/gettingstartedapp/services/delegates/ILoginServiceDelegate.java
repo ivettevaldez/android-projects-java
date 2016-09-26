@@ -1,4 +1,4 @@
-package com.silviavaldez.gettingstartedapp.services;
+package com.silviavaldez.gettingstartedapp.services.delegates;
 
 /**
  * Created by Silvia Valdez on 9/21/16.
