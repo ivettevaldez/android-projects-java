@@ -1,0 +1,49 @@
+<resources>
+
+    <string name="app_name">HackathonApp</string>
+
+    <!-- MESSAGES -->
+    <!-- Error -->
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+    <!-- Actions -->
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_open_navigation">Open navigation drawer</string>
+    <string name="action_close_navigation">Close navigation drawer</string>
+
+
+    <!-- Information -->
+    <string name="msg_contacts_permission">"Contacts permissions are needed for providing email completions."</string>
+
+
+    <!-- DashboardActivity -->
+    <string name="menu_title">Hackathon 2017</string>
+    <string name="menu_subtitle">© All rights reserved</string>
+
+
+    <!-- SplashActivity-->
+    <string name="splash_logo">Hackathon</string>
+    <string name="splash_copyright">Hackathon 2017</string>
+
+
+    <!-- LoginActivity -->
+    <string name="login_activity_title">Sign In</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_sign_up">Not account yet? <u>Create one</u></string>
+    <string name="login_sign_in_digital_citizen">Sign in with Ciudadano Digital</string>
+
+
+    <!-- SignUpActivity -->
+    <string name="sign_up_activity_title">Create Account</string>
+
+
+    <!-- DashboardActivity -->
+    <string name="dashboard_activity_title">Dashboard</string>
+
+</resources>
