@@ -12,6 +12,7 @@
     <!-- Actions -->
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
     <string name="action_settings">Settings</string>
     <string name="action_open_navigation">Open navigation drawer</string>
     <string name="action_close_navigation">Close navigation drawer</string>
@@ -45,5 +46,11 @@
 
     <!-- DashboardActivity -->
     <string name="dashboard_activity_title">Dashboard</string>
+
+
+    <!-- IntroActivity -->
+    <string name="intro_activity_title">Introduction</string>
+    <string name="intro_hello">Hello! Ready to start contributing?</string>
+    <string name="intro_section_format">Hello World from section: %1$d</string>
 
 </resources>
