@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
 
         initVariables();
-        addListenersToViews();
+//        addListenersToViews();
 
         String activityTitle = getString(R.string.login_activity_title);
         UtilHelper.changeActionBarTextColor(context, actionBar, activityTitle);
