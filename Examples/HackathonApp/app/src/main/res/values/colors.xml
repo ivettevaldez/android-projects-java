@@ -7,6 +7,7 @@
     <color name="transparent_white">#8Cffffff</color>
 
     <color name="aqua_marine">#1fe2a9</color>
+    <color name="caribbean_marine">#0fc38e</color>
     <color name="aqua_marine_shadow">#4c0a7b59</color>
 
     <color name="transparent_grey">#1e000000</color>
@@ -15,8 +16,8 @@
     <color name="hint_grey">#7f757f7c</color>
 
 
-    <color name="colorPrimary">#e0e0e0</color>
-    <color name="colorPrimaryDark">#9e9e9e</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#e0e0e0</color>
     <color name="colorAccent">#757575</color>
     <color name="colorDark">#616161</color>
 
