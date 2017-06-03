@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,8 +17,8 @@ import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
 import com.silvia_valdez.hackathonapp.views.adapters.PagerAdapter;
 import com.silvia_valdez.hackathonapp.views.controls.MenuTabs;
-import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
 import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
 
 public class DashboardActivity extends AppCompatActivity implements RideFragment.OnFragmentInteractionListener,
         ProfileFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
@@ -40,7 +39,6 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
     private ViewPager mViewPager;
 
     private Context mContext;
-    private ActionBar actionBar;
     private MenuTabs menuTabs;
 
 
@@ -132,7 +130,6 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
 
     private void initVariables() {
         mContext = getApplicationContext();
-        actionBar = getSupportActionBar();
     }
 
     private void setUpViewPager() {

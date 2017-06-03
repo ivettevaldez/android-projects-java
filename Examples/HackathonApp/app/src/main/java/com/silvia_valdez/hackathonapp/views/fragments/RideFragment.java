@@ -1,7 +1,7 @@
 package com.silvia_valdez.hackathonapp.views.fragments;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -9,8 +9,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.views.activities.RecyclablesActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,7 @@ public class RideFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -71,11 +74,21 @@ public class RideFragment extends Fragment {
 //            mListener.onFragmentInteraction(getString(R.string.lift_fragment_title));
 //        }
 //        getActionBar().setTitle(getString(R.string.lift_fragment_title));
-        return inflater.inflate(R.layout.fragment_ride, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_ride, container, false);
+        onButtonPressed(rootView);
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
+    public void onButtonPressed(View rootView) {
+        Button buttonRecyclables = (Button) rootView.findViewById(R.id.ride_frag_button_recyclables);
+        buttonRecyclables.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), RecyclablesActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

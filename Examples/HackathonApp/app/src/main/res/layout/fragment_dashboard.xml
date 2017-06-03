@@ -7,6 +7,15 @@
               android:background="@color/white"
               android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/dashboard_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:id="@+id/dashboard_frag_layout_popularity"
         android:layout_width="match_parent"
@@ -15,14 +24,16 @@
         android:layout_weight="3"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/dashboard_layout_months"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="-5dp"
                 android:orientation="horizontal">
 
                 <TextView
@@ -89,7 +100,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="-15dp"
                 android:layout_marginRight="-15dp"/>
-        </RelativeLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -132,7 +143,7 @@
                     android:gravity="center_vertical"
                     android:paddingEnd="5dp"
                     android:paddingStart="5dp"
-                    android:text="@string/dashboard_fragment_info_2"
+                    android:text="@string/default_zero_rides"
                     android:textColor="@color/steel_grey"/>
 
                 <TextView
@@ -168,7 +179,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal"
                     android:paddingEnd="5dp"
-                    android:text="@string/default_points"
+                    android:text="@string/default_zero"
                     android:textSize="32sp"/>
 
                 <TextView

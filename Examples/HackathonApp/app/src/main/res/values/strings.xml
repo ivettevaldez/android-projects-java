@@ -4,7 +4,8 @@
 
     <!-- Defaults -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="default_points">1,295</string>
+    <string name="default_zero">0</string>
+    <string name="default_zero_rides">0 viajes</string>
 
 
     <!-- MESSAGES -->
@@ -13,6 +14,13 @@
     <string name="error_invalid_password">El password es muy corto</string>
     <string name="error_incorrect_password">El password es incorrecto</string>
     <string name="error_field_required">Este campo es requerido</string>
+    <string name="error_no_chart_data">No hay información disponible.</string>
+
+    <string name="error_invalid_access_token">Invalid access token</string>
+    <string name="error_unauthorized_access_token">Unauthorized access token</string>
+    <string name="error_access_token_not_found">Access Token not found.</string>
+    <string name="error_no_access_token">Internal server error. No Access Token for U.</string>
+    <string name="error_standard_msg">Ha ocurrido un problema con el servidor, intente de nuevo más tarde.</string>
 
     <!-- Actions -->
     <string name="action_sign_in">Inicia sesión</string>
@@ -56,11 +64,9 @@
     <string name="sign_up_activity_title">Registrarse</string>
 
 
-
     <!-- DashboardFragment -->
     <string name="dashboard_fragment_title">Dashboard</string>
     <string name="dashboard_fragment_info_1">Has hecho</string>
-    <string name="dashboard_fragment_info_2">9 viajes</string>
     <string name="dashboard_fragment_info_3">en total</string>
     <string name="dashboard_fragment_info_4">y has acumulado:</string>
     <string name="dashboard_fragment_points">pts.</string>
@@ -70,7 +76,8 @@
     <string name="dashboard_may">MAY</string>
     <string name="dashboard_see_history">Ver historial</string>
     <string name="dashboard_programmed">Viaje programado</string>
-    <string name="dashboard_date">12 de Junio</string>
+    <string name="dashboard_date">Domingo 6 de Agosto</string>
+    <string name="dashboard_rides">viaje</string>
 
 
     <!-- RideFragment -->
@@ -80,5 +87,8 @@
     <!-- ProfileFragment -->
     <string name="profile_fragment_title">Mi Perfil</string>
 
+
+    <!-- ProfileFragment -->
+    <string name="recyclables_activity_title">Materiales Reciclables</string>
 
 </resources>

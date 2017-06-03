@@ -91,7 +91,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:text="xxxxx"
+                android:text="userpass"
                 android:textColorHighlight="@color/aqua_marine"
                 android:textSize="16sp"/>
 

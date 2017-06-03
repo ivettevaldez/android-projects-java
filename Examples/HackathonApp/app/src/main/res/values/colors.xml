@@ -6,11 +6,13 @@
     <color name="white">#ffffff</color>
     <color name="transparent_white">#8Cffffff</color>
 
+    <color name="bright_turquoise">#2deef5</color>
     <color name="aqua_marine">#1fe2a9</color>
     <color name="caribbean_green">#0fc38e</color>
     <color name="aqua_marine_shadow">#4c0a7b59</color>
     <color name="grey_shadow">#26757f7c</color>
 
+    <color name="transparent_white_bg">#3fffffff</color>
     <color name="transparent_grey">#1e000000</color>
     <color name="charcoal_grey">#444847</color>
     <color name="charcoal_grey_50">#80444847</color>

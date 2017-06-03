@@ -33,6 +33,7 @@ import android.widget.TextView;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.FontHelper;
+import com.silvia_valdez.hackathonapp.helpers.SessionManager;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
 
 import java.util.ArrayList;
@@ -50,12 +51,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
+    private static final String DRIVER_CREDENTIALS = "karen.gonzalez@hunabsys.com:driverpass";
+    private static final String USER_CREDENTIALS = "silvia.valdez.e@gmail.com:userpass";
+
+
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
      */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
+    private static final String[] DUMMY_CREDENTIALS = new String[] {
+            DRIVER_CREDENTIALS, USER_CREDENTIALS
     };
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
@@ -64,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private Context mContext;
     private ActionBar mActionBar;
+
+    private int mSelectedId;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -364,16 +371,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 return false;
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
+            for (int i = 0; i < DUMMY_CREDENTIALS.length; i++) {
+                String credential = DUMMY_CREDENTIALS[i];
                 String[] pieces = credential.split(":");
+
                 if (pieces[0].equals(mEmail)) {
                     // Account exists, return true if the password matches.
+                    mSelectedId = i + 1;
                     return pieces[1].equals(mPassword);
                 }
             }
-
-            // TODO: register the new account here.
-            return true;
+            return false;
         }
 
         @Override
@@ -382,6 +390,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                SessionManager sessionManager = new SessionManager(mContext);
+                sessionManager.saveSession(String.valueOf(mSelectedId));
                 Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                 startActivity(intent);
                 finish();
