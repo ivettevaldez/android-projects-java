@@ -4,6 +4,6 @@
                                              android:id="@+id/sign_up_layout"
                                              android:layout_width="match_parent"
                                              android:layout_height="match_parent"
-                                             tools:context="com.silvia_valdez.hackathonapp.activities.SignUpActivity">
+                                             tools:context=".views.activities.SignUpActivity">
 
 </android.support.constraint.ConstraintLayout>

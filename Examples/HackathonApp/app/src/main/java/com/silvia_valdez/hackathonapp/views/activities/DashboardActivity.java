@@ -1,11 +1,11 @@
-package com.silvia_valdez.hackathonapp.activities;
+package com.silvia_valdez.hackathonapp.views.activities;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,16 +13,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.ImageButton;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
+import com.silvia_valdez.hackathonapp.views.adapters.PagerAdapter;
+import com.silvia_valdez.hackathonapp.views.controls.MenuTabs;
+import com.silvia_valdez.hackathonapp.views.fragments.LiftFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
 
-public class DashboardActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class DashboardActivity extends AppCompatActivity implements LiftFragment.OnFragmentInteractionListener,
+        ProfileFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener {
+
+    /**
+     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * fragments for each of the sections. We use a
+     * {@link FragmentPagerAdapter} derivative, which will keep every
+     * loaded fragment in memory. If this becomes too memory intensive, it
+     * may be best to switch to a
+     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     */
+    private PagerAdapter mPagerAdapter;
+
+    /**
+     * The {@link ViewPager} that will host the section contents.
+     */
+    private ViewPager mViewPager;
 
     private Context context;
     private ActionBar actionBar;
+    private MenuTabs menuTabs;
 
 
     @Override
@@ -33,17 +53,9 @@ public class DashboardActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         initVariables();
-        String activityTitle = getString(R.string.dashboard_activity_title);
-        UtilHelper.changeActionBarTextColor(context, actionBar, activityTitle);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        setUpViewPager();
+        setUpTabs();
+        setActionBarTitle(getString(R.string.dashboard_activity_title));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -112,9 +124,45 @@ public class DashboardActivity extends AppCompatActivity
         return true;
     }
 
+    public void setActionBarTitle(String title) {
+        if (getSupportActionBar() != null) {
+//            getSupportActionBar().setTitle(title);
+            UtilHelper.changeActionBarTextColor(context, getSupportActionBar(), title);
+        }
+    }
+
     private void initVariables() {
         context = getApplicationContext();
         actionBar = getSupportActionBar();
+    }
+
+    private void setUpViewPager() {
+        // Create the adapter that will return a fragment for each of the three
+        // primary sections of the activity.
+        mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.dashboard_layout_container);
+        mViewPager.setAdapter(mPagerAdapter);
+    }
+
+    private void setUpTabs() {
+        menuTabs = new MenuTabs(mViewPager);
+
+        ImageButton button1 = (ImageButton) findViewById(R.id.tabs_button_1);
+        ImageButton button2 = (ImageButton) findViewById(R.id.tabs_button_2);
+        ImageButton button3 = (ImageButton) findViewById(R.id.tabs_button_3);
+        ImageButton button4 = (ImageButton) findViewById(R.id.tabs_button_4);
+
+        button1.setOnClickListener(menuTabs.goToSection);
+        button2.setOnClickListener(menuTabs.goToSection);
+        button3.setOnClickListener(menuTabs.goToSection);
+        button4.setOnClickListener(menuTabs.goToSection);
+    }
+
+    @Override
+    public void onFragmentInteraction(String title) {
+        setActionBarTitle(title);
     }
 
 }

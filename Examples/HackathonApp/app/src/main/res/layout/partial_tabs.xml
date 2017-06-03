@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:id="@+id/tabs_layout_container"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/colorPrimary"
+              android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/tabs_button_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:tag="0"
+        app:srcCompat="@android:drawable/ic_dialog_info"/>
+
+    <ImageButton
+        android:id="@+id/tabs_button_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:tag="1"
+        app:srcCompat="@android:drawable/ic_dialog_info"/>
+
+    <ImageButton
+        android:id="@+id/tabs_button_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:tag="2"
+        app:srcCompat="@android:drawable/ic_dialog_info"/>
+
+    <ImageButton
+        android:id="@+id/tabs_button_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:padding="10dp"
+        android:tag="3"
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/ic_dialog_info"/>
+
+</LinearLayout>
