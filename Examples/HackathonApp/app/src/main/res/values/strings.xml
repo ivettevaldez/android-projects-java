@@ -14,7 +14,7 @@
     <string name="error_field_required">Este campo es requerido</string>
 
     <!-- Actions -->
-    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in">Inicia sesión</string>
     <string name="action_sign_in_short">Iniciar Sesión</string>
     <string name="action_sign_up">Registrarse</string>
     <string name="action_settings">Configuración</string>
@@ -46,7 +46,7 @@
     <string name="login_activity_title">Iniciar sesión</string>
     <string name="login_user">Usuario</string>
     <string name="login_password">Contraseña</string>
-    <string name="login_forgot_password">Olvidé mi contraseña</string>
+    <string name="login_forgot_password">¿Olvidaste tu contraseña?</string>
     <string name="login_without_account">¿Aún no tienes una cuenta?</string>
     <string name="login_sign_up">Regístrate</string>
 
@@ -57,6 +57,16 @@
 
     <!-- DashboardActivity -->
     <string name="dashboard_activity_title">Pantalla principal</string>
+
+    <string name="dashboard_popularity">Popularidad</string>
+    <string name="dashboard_monday">L</string>
+    <string name="dashboard_tuesday">MA</string>
+    <string name="dashboard_wednesday">MI</string>
+    <string name="dashboard_thursday">J</string>
+    <string name="dashboard_friday">V</string>
+    <string name="dashboard_saturday">S</string>
+    <string name="dashboard_sunday">D</string>
+
 
 
     <!-- DashboardFragment -->
