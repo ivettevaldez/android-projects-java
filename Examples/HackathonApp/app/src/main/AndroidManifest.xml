@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.SplashActivity"
+            android:name=".views.activities.SplashActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -24,16 +24,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".views.activities.LoginActivity"
             android:label="@string/login_activity_title"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".activities.SignUpActivity"/>
+        <activity android:name=".views.activities.SignUpActivity"/>
         <activity
-            android:name=".activities.DashboardActivity"
+            android:name=".views.activities.DashboardActivity"
             android:label="@string/dashboard_activity_title"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".activities.IntroActivity"
+            android:name=".views.activities.IntroActivity"
             android:label="@string/intro_activity_title"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>

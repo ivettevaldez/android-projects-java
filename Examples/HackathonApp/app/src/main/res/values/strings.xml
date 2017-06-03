@@ -2,6 +2,10 @@
 
     <string name="app_name">HackathonApp</string>
 
+    <!-- Defaults -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
     <!-- MESSAGES -->
     <!-- Error -->
     <string name="error_invalid_email">Este email es inválido</string>
@@ -10,8 +14,8 @@
     <string name="error_field_required">Este campo es requerido</string>
 
     <!-- Actions -->
-    <string name="action_sign_in">Iniciar sesión</string>
-    <string name="action_sign_in_short">Iniciar sesión</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="action_sign_in_short">Iniciar Sesión</string>
     <string name="action_sign_up">Registrarse</string>
     <string name="action_settings">Configuración</string>
     <string name="action_open_navigation">Abrir menú</string>
@@ -23,7 +27,7 @@
         auto-completado de email.</string>
 
 
-    <!-- DashboardActivity -->
+    <!-- Menu -->
     <string name="menu_title">Hackathon 2017</string>
     <string name="menu_subtitle">© Todos los derechos reservados</string>
 
@@ -33,11 +37,18 @@
     <string name="splash_copyright">Hackathon 2017</string>
 
 
+    <!-- IntroActivity -->
+    <string name="intro_activity_title">Introducción</string>
+    <string name="intro_hello">¡Hola! ¿Listo para comenzar a contribuir?</string>
+
+
     <!-- LoginActivity -->
     <string name="login_activity_title">Iniciar sesión</string>
-    <string name="login_email">Email</string>
+    <string name="login_user">Usuario</string>
     <string name="login_password">Contraseña</string>
-    <string name="login_sign_up"><u>¿Olvidaste tu contraseña?</u></string>
+    <string name="login_forgot_password">Olvidé mi contraseña</string>
+    <string name="login_without_account">¿Aún no tienes una cuenta?</string>
+    <string name="login_sign_up">Regístrate</string>
 
 
     <!-- SignUpActivity -->
@@ -48,8 +59,16 @@
     <string name="dashboard_activity_title">Pantalla principal</string>
 
 
-    <!-- IntroActivity -->
-    <string name="intro_activity_title">Introducción</string>
-    <string name="intro_hello">¡Hola! ¿Listo para comenzar a contribuir?</string>
+    <!-- DashboardFragment -->
+    <string name="dashboard_fragment_title">Página Principal</string>
+
+
+    <!-- LiftFragment -->
+    <string name="lift_fragment_title">Viajes</string>
+
+
+    <!-- ProfileFragment -->
+    <string name="profile_fragment_title">Mi Perfil</string>
+
 
 </resources>

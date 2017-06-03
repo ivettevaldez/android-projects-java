@@ -1,4 +1,4 @@
-package com.silvia_valdez.hackathonapp.activities;
+package com.silvia_valdez.hackathonapp.views.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -151,7 +151,7 @@ public class IntroActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
+            // Return a DashboardFragment (defined as a static inner class below).
             return PlaceholderFragment.newInstance(position + 1);
         }
 

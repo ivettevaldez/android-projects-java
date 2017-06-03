@@ -1,4 +1,4 @@
-package com.silvia_valdez.hackathonapp.activities;
+package com.silvia_valdez.hackathonapp.views.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -31,6 +32,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.helpers.FontHelper;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
 
 import java.util.ArrayList;
@@ -60,14 +62,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private UserLoginTask mAuthTask = null;
 
-    private Context context;
-    private ActionBar actionBar;
+    private Context mContext;
+    private ActionBar mActionBar;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Button mEmailSignInButton;
+    private TextView mTextForgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,16 +79,38 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         setContentView(R.layout.activity_login);
 
         initVariables();
-//        addListenersToViews();
+        setUpFonts();
+        addListenersToViews();
 
         String activityTitle = getString(R.string.login_activity_title);
-        UtilHelper.changeActionBarTextColor(context, actionBar, activityTitle);
+        UtilHelper.changeActionBarTextColor(mContext, mActionBar, activityTitle);
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.login_auto_email);
         populateAutoComplete();
 
+
+    }
+
+    private void initVariables() {
+        mContext = getApplicationContext();
+        mActionBar = getSupportActionBar();
+        mEmailSignInButton = (Button) findViewById(R.id.login_button_sign_in);
+        mLoginFormView = findViewById(R.id.login_scroll_form);
+        mProgressView = findViewById(R.id.login_progress);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.login_auto_email);
         mPasswordView = (EditText) findViewById(R.id.login_edit_password);
+        mTextForgotPassword = (TextView) findViewById(R.id.login_text_forgot_password);
+    }
+
+    private void addListenersToViews() {
+        mTextForgotPassword.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -96,32 +122,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.login_button_sign_in);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_scroll_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
-    private void initVariables() {
-        context = getApplicationContext();
-        actionBar = getSupportActionBar();
-    }
+    private void setUpFonts() {
+        // Setup Fonts.
+        FontHelper fontHelper = new FontHelper(mContext);
 
-    private void addListenersToViews() {
+        Typeface regular = fontHelper.getRobotoRegular();
+        Typeface medium = fontHelper.getRobotoMedium();
+
         TextView textSignUp = (TextView) findViewById(R.id.login_text_sign_up);
-        textSignUp.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
-        });
+        textSignUp.setTypeface(medium);
+        mTextForgotPassword.setTypeface(medium);
+        mEmailSignInButton.setTypeface(regular);
     }
 
     private void populateAutoComplete() {

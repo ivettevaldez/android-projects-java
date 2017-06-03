@@ -1,4 +1,4 @@
-package com.silvia_valdez.hackathonapp.activities;
+package com.silvia_valdez.hackathonapp.views.activities;
 
 import android.content.Context;
 import android.os.Bundle;
