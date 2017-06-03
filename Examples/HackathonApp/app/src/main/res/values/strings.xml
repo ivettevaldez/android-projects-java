@@ -4,27 +4,28 @@
 
     <!-- MESSAGES -->
     <!-- Error -->
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_invalid_email">Este email es inválido</string>
+    <string name="error_invalid_password">El password es muy corto</string>
+    <string name="error_incorrect_password">El password es incorrecto</string>
+    <string name="error_field_required">Este campo es requerido</string>
 
     <!-- Actions -->
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="action_sign_up">Sign up</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_open_navigation">Open navigation drawer</string>
-    <string name="action_close_navigation">Close navigation drawer</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_sign_in_short">Iniciar sesión</string>
+    <string name="action_sign_up">Registrarse</string>
+    <string name="action_settings">Configuración</string>
+    <string name="action_open_navigation">Abrir menú</string>
+    <string name="action_close_navigation">Cerrar menú</string>
 
 
     <!-- Information -->
-    <string name="msg_contacts_permission">"Contacts permissions are needed for providing email completions."</string>
+    <string name="msg_contacts_permission">Los permisos de Contactos son necesarios para proveer
+        auto-completado de email.</string>
 
 
     <!-- DashboardActivity -->
     <string name="menu_title">Hackathon 2017</string>
-    <string name="menu_subtitle">© All rights reserved</string>
+    <string name="menu_subtitle">© Todos los derechos reservados</string>
 
 
     <!-- SplashActivity-->
@@ -33,24 +34,22 @@
 
 
     <!-- LoginActivity -->
-    <string name="login_activity_title">Sign In</string>
+    <string name="login_activity_title">Iniciar sesión</string>
     <string name="login_email">Email</string>
-    <string name="login_password">Password</string>
-    <string name="login_sign_up">Not account yet? <u>Create one</u></string>
-    <string name="login_sign_in_digital_citizen">Sign in with Ciudadano Digital</string>
+    <string name="login_password">Contraseña</string>
+    <string name="login_sign_up"><u>¿Olvidaste tu contraseña?</u></string>
 
 
     <!-- SignUpActivity -->
-    <string name="sign_up_activity_title">Create Account</string>
+    <string name="sign_up_activity_title">Registrarse</string>
 
 
     <!-- DashboardActivity -->
-    <string name="dashboard_activity_title">Dashboard</string>
+    <string name="dashboard_activity_title">Pantalla principal</string>
 
 
     <!-- IntroActivity -->
-    <string name="intro_activity_title">Introduction</string>
-    <string name="intro_hello">Hello! Ready to start contributing?</string>
-    <string name="intro_section_format">Hello World from section: %1$d</string>
+    <string name="intro_activity_title">Introducción</string>
+    <string name="intro_hello">¡Hola! ¿Listo para comenzar a contribuir?</string>
 
 </resources>
