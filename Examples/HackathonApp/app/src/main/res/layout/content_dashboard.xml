@@ -13,6 +13,7 @@
         android:id="@+id/dashboard_layout_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
         android:layout_weight="1"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:layout_editor_absoluteX="8dp"

@@ -18,7 +18,7 @@ public class FontHelper {
 
     private Typeface mRobotoMedium;
     private Typeface mRobotoRegular;
-    private Typeface mExoSoftLight;
+    private Typeface mRobotoLight;
     private Typeface mExoSoftLightItalic;
     private Typeface mExoSoftBold;
     private Typeface mExoSoftSemiBold;
@@ -35,9 +35,9 @@ public class FontHelper {
 
         String strRobotoRegular = "fonts/Roboto-Regular.ttf";
         this.mRobotoRegular = Typeface.createFromAsset(context.getResources().getAssets(), strRobotoRegular);
-//
-//        String strExoSoftLight = "fonts/exo_soft_light.ttf";
-//        this.mExoSoftLight = Typeface.createFromAsset(context.getResources().getAssets(), strExoSoftLight);
+
+        String strRobotoLight = "fonts/Roboto-Light.ttf";
+        this.mRobotoLight = Typeface.createFromAsset(context.getResources().getAssets(), strRobotoLight);
 //
 //        String strExoSoftLighItalic = "fonts/exo_soft_light_italic.ttf";
 //        this.mExoSoftLightItalic = Typeface.createFromAsset(context.getResources().getAssets(), strExoSoftLighItalic);
@@ -65,8 +65,8 @@ public class FontHelper {
         return mRobotoRegular;
     }
 
-    public Typeface getExoSoftLight() {
-        return mExoSoftLight;
+    public Typeface getRobotoLight() {
+        return mRobotoLight;
     }
 
     public Typeface getExoSoftLightItalic() {

@@ -2,12 +2,12 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.silvia_valdez.hackathonapp.views.fragments.LiftFragment">
+             tools:context="com.silvia_valdez.hackathonapp.views.fragments.RideFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/lift_fragment_title"/>
+        android:text="@string/ride_fragment_title"/>
 
 </FrameLayout>

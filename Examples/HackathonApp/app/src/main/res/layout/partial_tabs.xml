@@ -25,7 +25,7 @@
         android:background="@android:color/transparent"
         android:padding="15dp"
         android:tag="1"
-        app:srcCompat="@mipmap/ic_lift"/>
+        app:srcCompat="@mipmap/ic_ride"/>
 
     <ImageButton
         android:id="@+id/tabs_button_3"

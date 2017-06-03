@@ -4,6 +4,7 @@
 
     <!-- Defaults -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_points">1,295</string>
 
 
     <!-- MESSAGES -->
@@ -55,26 +56,25 @@
     <string name="sign_up_activity_title">Registrarse</string>
 
 
-    <!-- DashboardActivity -->
-    <string name="dashboard_activity_title">Pantalla principal</string>
-
-    <string name="dashboard_popularity">Popularidad</string>
-    <string name="dashboard_monday">L</string>
-    <string name="dashboard_tuesday">MA</string>
-    <string name="dashboard_wednesday">MI</string>
-    <string name="dashboard_thursday">J</string>
-    <string name="dashboard_friday">V</string>
-    <string name="dashboard_saturday">S</string>
-    <string name="dashboard_sunday">D</string>
-
-
 
     <!-- DashboardFragment -->
-    <string name="dashboard_fragment_title">Página Principal</string>
+    <string name="dashboard_fragment_title">Dashboard</string>
+    <string name="dashboard_fragment_info_1">Has hecho</string>
+    <string name="dashboard_fragment_info_2">9 viajes</string>
+    <string name="dashboard_fragment_info_3">en total</string>
+    <string name="dashboard_fragment_info_4">y has acumulado:</string>
+    <string name="dashboard_fragment_points">pts.</string>
+    <string name="dashboard_february">FEB</string>
+    <string name="dashboard_march">MAR</string>
+    <string name="dashboard_april">ABR</string>
+    <string name="dashboard_may">MAY</string>
+    <string name="dashboard_see_history">Ver historial</string>
+    <string name="dashboard_programmed">Viaje programado</string>
+    <string name="dashboard_date">12 de Junio</string>
 
 
-    <!-- LiftFragment -->
-    <string name="lift_fragment_title">Viajes</string>
+    <!-- RideFragment -->
+    <string name="ride_fragment_title">Viajes</string>
 
 
     <!-- ProfileFragment -->

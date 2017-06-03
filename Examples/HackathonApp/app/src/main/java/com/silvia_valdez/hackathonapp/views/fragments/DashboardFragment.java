@@ -1,14 +1,16 @@
 package com.silvia_valdez.hackathonapp.views.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.helpers.FontHelper;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -21,21 +23,19 @@ public class DashboardFragment extends Fragment {
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
 
-    private static Context context;
+    private static Context mContext;
 
     public DashboardFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        context = getContext();
-//
-//        int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-//        int color = getTabColor(sectionNumber);
-//
-        //        rootView.setBackgroundColor(color);
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+        mContext = getContext();
+        View rootView = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        setUpFonts(rootView);
+        return rootView;
 
+//        int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
         // TextView textView = (TextView) rootView.findViewById(R.id.frag_intro_text_section);
         // textView.setText(getString(R.string.intro_section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
     }
@@ -49,31 +49,32 @@ public class DashboardFragment extends Fragment {
      * profile
      *
      */
-    public static DashboardFragment newInstance(int sectionNumber) {
+    public static DashboardFragment newInstance(Context context) {
         DashboardFragment fragment = new DashboardFragment();
+        mContext = context;
         Bundle args = new Bundle();
-        args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
         return fragment;
     }
 
-    private int getTabColor(int sectionNumber) {
-        switch (sectionNumber) {
-            case 1:
-                return ContextCompat.getColor(context, android.R.color.holo_blue_bright);
+    private void setUpFonts(View rootView) {
+        // Setup Fonts.
+        FontHelper fontHelper = new FontHelper(mContext);
 
-            case 2:
-                return ContextCompat.getColor(context, android.R.color.holo_green_light);
+        Typeface light = fontHelper.getRobotoLight();
+        Typeface medium = fontHelper.getRobotoMedium();
 
-            case 3:
-                return ContextCompat.getColor(context, android.R.color.holo_orange_light);
+        TextView textHistory = (TextView) rootView.findViewById(R.id.dashboard_frag_text_history);
+        TextView textRidesNumber = (TextView) rootView.findViewById(R.id.dashboard_frag_text_rides_number);
+        TextView textPointsNumber = (TextView) rootView.findViewById(R.id.dashboard_frag_text_points_value);
+        TextView textPointsLabel = (TextView) rootView.findViewById(R.id.dashboard_frag_text_points_label);
+        TextView textDate = (TextView) rootView.findViewById(R.id.dashboard_frag_text_date);
 
-            case 4:
-                return ContextCompat.getColor(context, android.R.color.holo_red_light);
-
-            default:
-                return ContextCompat.getColor(context, android.R.color.holo_blue_bright);
-        }
+        textPointsNumber.setTypeface(light);
+        textRidesNumber.setTypeface(medium);
+        textHistory.setTypeface(medium);
+        textPointsLabel.setTypeface(medium);
+        textDate.setTypeface(medium);
     }
 
 }

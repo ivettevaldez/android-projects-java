@@ -19,7 +19,7 @@ public class UtilHelper {
     public static void changeActionBarTextColor(Context context, ActionBar actionBar, String title) {
         SpannableString spannableString = new SpannableString(title);
         spannableString.setSpan(new ForegroundColorSpan(
-                        ContextCompat.getColor(context, R.color.colorDark)), 0, title.length(),
+                        ContextCompat.getColor(context, R.color.charcoal_grey)), 0, title.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         if (actionBar != null) {
             actionBar.setTitle(spannableString);

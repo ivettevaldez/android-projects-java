@@ -1,11 +1,12 @@
 package com.silvia_valdez.hackathonapp.views.adapters;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.silvia_valdez.hackathonapp.views.fragments.DashboardFragment;
-import com.silvia_valdez.hackathonapp.views.fragments.LiftFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
 import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
 
 /**
@@ -17,8 +18,11 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     private static final int TOTAL_PAGES = 3;
 
-    public PagerAdapter(FragmentManager fm) {
+    private Context mContext;
+
+    public PagerAdapter(Context context, FragmentManager fm) {
         super(fm);
+        mContext = context;
     }
 
     @Override
@@ -29,9 +33,9 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
-                return DashboardFragment.newInstance(position + 1);
+                return DashboardFragment.newInstance(mContext);
             case 1:
-                return LiftFragment.newInstance();
+                return RideFragment.newInstance();
             case 2:
                 return ProfileFragment.newInstance();
         }

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="carbon-0.14.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/89ec35487a048600a4e9be953129e08768fd78e7/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/89ec35487a048600a4e9be953129e08768fd78e7/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/tk.zielony/carbon/0.14.0/6495061278c2130f442de8c6a95e8e3e670cdbda/carbon-0.14.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

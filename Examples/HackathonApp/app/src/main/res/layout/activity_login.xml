@@ -105,7 +105,7 @@
             android:paddingBottom="20dp"
             android:paddingTop="10dp"
             android:text="@string/login_forgot_password"
-            android:textColor="@color/caribbean_marine"
+            android:textColor="@color/caribbean_green"
             />
 
         <Button
@@ -116,6 +116,8 @@
             android:layout_margin="10dp"
             android:background="@drawable/shape_button_rounded_green"
             android:elevation="24dp"
+            android:fadingEdge="horizontal|vertical"
+            android:fadingEdgeLength="10dp"
             android:shadowColor="@color/aqua_marine_shadow"
             android:text="@string/action_sign_in"
             android:textColor="@color/white"
@@ -148,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="5dp"
                 android:text="@string/login_sign_up"
-                android:textColor="@color/caribbean_marine"
+                android:textColor="@color/caribbean_green"
                 />
         </LinearLayout>
 

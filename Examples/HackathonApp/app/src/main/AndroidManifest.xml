@@ -16,6 +16,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.activities.SplashActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -25,16 +27,22 @@
         </activity>
         <activity
             android:name=".views.activities.LoginActivity"
+            android:configChanges="orientation"
             android:label="@string/login_activity_title"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".views.activities.SignUpActivity"/>
         <activity
             android:name=".views.activities.DashboardActivity"
-            android:label="@string/dashboard_activity_title"
+            android:configChanges="orientation"
+            android:label="@string/dashboard_fragment_title"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".views.activities.IntroActivity"
+            android:configChanges="orientation"
             android:label="@string/intro_activity_title"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
