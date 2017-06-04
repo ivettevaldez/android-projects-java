@@ -34,6 +34,7 @@ dependencies {
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
     compile 'tk.zielony:carbon:0.14.0'
+    compile 'com.stepstone.stepper:material-stepper:3.2.3'
     compile 'org.apache.directory.studio:org.apache.commons.io:2.4'
     compile 'com.google.code.gson:gson:2.7'
     testCompile 'junit:junit:4.12'

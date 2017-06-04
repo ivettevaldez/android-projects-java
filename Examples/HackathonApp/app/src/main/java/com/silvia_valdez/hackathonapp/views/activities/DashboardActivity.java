@@ -15,7 +15,7 @@ import android.widget.ImageButton;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
-import com.silvia_valdez.hackathonapp.views.adapters.PagerAdapter;
+import com.silvia_valdez.hackathonapp.views.adapters.DashboardPagerAdapter;
 import com.silvia_valdez.hackathonapp.views.controls.MenuTabs;
 import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
 import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
@@ -31,7 +31,7 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
      * may be best to switch to a
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
-    private PagerAdapter mPagerAdapter;
+    private DashboardPagerAdapter mDashboardPagerAdapter;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -135,11 +135,11 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
     private void setUpViewPager() {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mPagerAdapter = new PagerAdapter(mContext, getSupportFragmentManager());
+        mDashboardPagerAdapter = new DashboardPagerAdapter(mContext, getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.dashboard_layout_container);
-        mViewPager.setAdapter(mPagerAdapter);
+        mViewPager.setAdapter(mDashboardPagerAdapter);
     }
 
     private void setUpTabs() {
@@ -148,12 +148,10 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
         ImageButton button1 = (ImageButton) findViewById(R.id.tabs_button_1);
         ImageButton button2 = (ImageButton) findViewById(R.id.tabs_button_2);
         ImageButton button3 = (ImageButton) findViewById(R.id.tabs_button_3);
-        ImageButton button4 = (ImageButton) findViewById(R.id.tabs_button_4);
 
         button1.setOnClickListener(menuTabs.goToSection);
         button2.setOnClickListener(menuTabs.goToSection);
         button3.setOnClickListener(menuTabs.goToSection);
-        button4.setOnClickListener(menuTabs.goToSection);
     }
 
     @Override

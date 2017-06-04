@@ -25,7 +25,7 @@
         android:background="@android:color/transparent"
         android:padding="15dp"
         android:tag="1"
-        app:srcCompat="@mipmap/ic_ride"/>
+        app:srcCompat="@mipmap/ic_tab_car"/>
 
     <ImageButton
         android:id="@+id/tabs_button_3"
@@ -35,17 +35,6 @@
         android:background="@android:color/transparent"
         android:padding="15dp"
         android:tag="2"
-        app:srcCompat="@mipmap/ic_profile"/>
-
-    <ImageButton
-        android:id="@+id/tabs_button_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
-        android:padding="15dp"
-        android:tag="3"
-        android:visibility="gone"
-        app:srcCompat="@android:drawable/ic_dialog_info"/>
+        app:srcCompat="@mipmap/ic_tab_profile"/>
 
 </LinearLayout>

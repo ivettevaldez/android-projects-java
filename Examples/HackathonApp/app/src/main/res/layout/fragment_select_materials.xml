@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:paddingTop="30dp">
+
+        <TextView
+            android:id="@+id/select_material_text_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/program_ride_instructions_1"
+            android:textColor="@color/steel_grey"
+            android:textSize="27sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="25dp">
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingEnd="15dp"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/program_ride_own_material"
+                android:textColor="@color/charcoal_grey"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_paperboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_paperboard"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_paperboard"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_plastic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_plastic"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_plastic"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_newspaper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_newspaper"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_newspaper"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_glass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_glass"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_glass"/>
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_aluminium"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_aluminium"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_aluminium"/>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_card_white"
+                android:elevation="7dp"
+                android:fadingEdge="horizontal|vertical"
+                android:fadingEdgeLength="10dp">
+
+                <TextView
+                    android:id="@+id/select_material_text_paper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:paddingBottom="20dp"
+                    android:text="@string/program_ride_paper"
+                    android:textColor="@color/charcoal_grey"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="30dp"
+                    android:paddingBottom="30dp"
+                    android:src="@mipmap/ic_paper"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

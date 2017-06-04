@@ -9,6 +9,8 @@
 
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <item name="ms_stepperStyle">@style/DotStepperStyle</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -16,10 +18,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!--<style name="ErrorAppearance" parent="@android:style/TextAppearance">-->
-        <!--<item name="android:textColor">@color/carbon_red_400</item>-->
-        <!--<item name="android:textSize">12sp</item>-->
-    <!--</style>-->
+    <style name="DotStepperStyle">
+        <item name="ms_bottomNavigationBackground">@color/caribbean_green</item>
+    </style>
 
     <style name="TextLabel" parent="AppTheme.NoActionBar">
         <!-- Hint color and label color in FALSE state -->

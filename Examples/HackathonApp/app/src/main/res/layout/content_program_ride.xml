@@ -1,0 +1,41 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              app:layout_behavior="@string/appbar_scrolling_view_behavior"
+              tools:context=".views.activities.DashboardActivity"
+              tools:showIn="@layout/app_bar_dashboard">
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/program_ride_layout_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="55dp"-->
+        <!--android:layout_weight="1"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+        <!--tools:layout_editor_absoluteX="8dp"-->
+        <!--tools:layout_editor_absoluteY="8dp">-->
+
+    <!--</android.support.v4.view.ViewPager>-->
+
+
+    <com.stepstone.stepper.StepperLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                         xmlns:app="http://schemas.android.com/apk/res-auto"
+                                         android:id="@+id/stepperLayout"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content"
+                                         android:layout_alignParentBottom="true"
+                                         android:layout_gravity="bottom"
+                                         android:layout_marginTop="55dp"
+                                         app:ms_activeStepColor="@color/white_snow"
+                                         app:ms_backButtonColor="@color/white_snow"
+                                         app:ms_backButtonText="@string/program_ride_back"
+                                         app:ms_completeButtonColor="@color/white_snow"
+                                         app:ms_completeButtonText="@string/program_ride_continue"
+                                         app:ms_inactiveStepColor="@color/white_snow"
+                                         app:ms_nextButtonColor="@color/white_snow"
+                                         app:ms_nextButtonText="@string/program_ride_next"
+                                         app:ms_stepperType="dots"/>
+</LinearLayout>

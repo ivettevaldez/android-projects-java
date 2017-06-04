@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="16dp"
-        android:text="@string/recyclables_activity_title"/>
+        android:text="@string/program_ride_activity_title"/>
 
 </FrameLayout>

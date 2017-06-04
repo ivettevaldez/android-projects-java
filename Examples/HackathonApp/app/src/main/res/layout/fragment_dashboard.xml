@@ -231,7 +231,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="2"
+            android:layout_weight="2.5"
             android:elevation="24dp">
 
             <ImageView
@@ -239,7 +239,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:srcCompat="@mipmap/ic_programmed_lift"/>
+                app:srcCompat="@mipmap/ic_car"/>
         </FrameLayout>
 
         <LinearLayout
@@ -270,7 +270,7 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="2">
 
             <ImageView
                 android:id="@+id/dashboard_frag_image_arrow"

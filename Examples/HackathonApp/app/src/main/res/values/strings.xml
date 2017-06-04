@@ -88,7 +88,18 @@
     <string name="profile_fragment_title">Mi Perfil</string>
 
 
-    <!-- ProfileFragment -->
-    <string name="recyclables_activity_title">Materiales Reciclables</string>
+    <!-- ProgramRideFragment -->
+    <string name="program_ride_activity_title">Nuevo viaje</string>
+    <string name="program_ride_instructions_1">1. Selecciona los\n  materiales que\n  recolectaste.</string>
+    <string name="program_ride_own_material">¿Deseas llevar material propio?</string>
+    <string name="program_ride_paperboard">Cartón</string>
+    <string name="program_ride_plastic">Plástico</string>
+    <string name="program_ride_newspaper">Periódico</string>
+    <string name="program_ride_glass">Vidrio</string>
+    <string name="program_ride_aluminium">Aluminio</string>
+    <string name="program_ride_paper">Papel</string>
+    <string name="program_ride_back">Atrás</string>
+    <string name="program_ride_next">Siguiente</string>
+    <string name="program_ride_continue">Finalizar</string>
 
 </resources>

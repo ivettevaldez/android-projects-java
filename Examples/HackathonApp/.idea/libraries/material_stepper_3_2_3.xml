@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="material-stepper-3.2.3">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/f67aa9a55c2d463e79a1774b5c30a6cd8a3e0cbc/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/f67aa9a55c2d463e79a1774b5c30a6cd8a3e0cbc/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.stepstone.stepper/material-stepper/3.2.3/be1c55e1546e44cedc05e5541cb6d86c58c47faf/material-stepper-3.2.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

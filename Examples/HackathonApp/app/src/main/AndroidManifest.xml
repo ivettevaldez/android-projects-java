@@ -47,11 +47,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".views.activities.RecyclablesActivity"
+        <activity android:name=".views.activities.ProgramRideActivity"
                   android:configChanges="orientation"
-                  android:label="@string/recyclables_activity_title"
+                  android:label="@string/program_ride_activity_title"
                   android:screenOrientation="portrait"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+                  android:theme="@style/AppTheme.NoActionBar">
         </activity>
     </application>
 

@@ -4,6 +4,7 @@
     <!-- COLOR PALETTE -->
 
     <color name="white">#ffffff</color>
+    <color name="white_snow">#ffffff</color>
     <color name="transparent_white">#8Cffffff</color>
 
     <color name="bright_turquoise">#2deef5</color>
@@ -22,7 +23,7 @@
 
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#ffffff</color>
-    <color name="colorAccent">#757575</color>
+    <color name="colorAccent">@color/caribbean_green</color>
     <color name="colorDark">#616161</color>
 
     <!--

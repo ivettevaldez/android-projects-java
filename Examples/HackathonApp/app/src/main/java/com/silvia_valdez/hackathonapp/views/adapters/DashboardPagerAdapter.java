@@ -14,13 +14,13 @@ import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
  * one of the sections/tabs/pages.
  * Created by Silvia Valdez on 6/2/17.
  */
-public class PagerAdapter extends FragmentPagerAdapter {
+public class DashboardPagerAdapter extends FragmentPagerAdapter {
 
     private static final int TOTAL_PAGES = 3;
 
     private Context mContext;
 
-    public PagerAdapter(Context context, FragmentManager fm) {
+    public DashboardPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
