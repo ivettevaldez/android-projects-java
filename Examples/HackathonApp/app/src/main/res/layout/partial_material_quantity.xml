@@ -12,8 +12,7 @@
         android:id="@+id/select_material_frame_paperboard"
         style="@drawable/selector_button_materials"
         android:layout_width="match_parent"
-        android:layout_height="145dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:clickable="true"
         android:fadingEdgeLength="10dp"
@@ -57,6 +56,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
                 android:text="@string/quantity_quantity"
                 android:textColor="@color/steel_grey"/>
 
@@ -70,7 +70,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_dialog_info"/>
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@mipmap/ic_minus"/>
 
                 <TextView
                     android:id="@+id/partial_material_text_quantity"
@@ -89,7 +90,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_dialog_info"/>
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@mipmap/ic_plus"/>
 
             </LinearLayout>
 
@@ -106,6 +108,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
                 android:text="@string/quantity_container"
                 android:textColor="@color/steel_grey"/>
 
@@ -124,7 +127,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:orientation="horizontal">
 
@@ -132,7 +135,8 @@
             android:id="@+id/partial_material_image_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_menu_camera"/>
+            android:background="@android:color/transparent"
+            app:srcCompat="@mipmap/ic_camera"/>
 
         <TextView
             android:id="@+id/textView6"

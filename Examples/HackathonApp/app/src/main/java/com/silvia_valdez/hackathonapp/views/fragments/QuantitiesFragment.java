@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -38,6 +39,9 @@ public class QuantitiesFragment extends Fragment implements Step {
 
 
     private static Context mContext;
+    private View viewPaperboard;
+    private View viewPlastic;
+
     private OnFragmentInteractionListener mListener;
 
     public QuantitiesFragment() {
@@ -88,18 +92,32 @@ public class QuantitiesFragment extends Fragment implements Step {
     }
 
     private void setUpViews(View rootView) {
-        View viewPaperboard = rootView.findViewById(R.id.quantities_view_paperboard);
-        View viewPlastic = rootView.findViewById(R.id.quantities_view_plastic);
+        viewPaperboard = rootView.findViewById(R.id.quantities_view_paperboard);
+        viewPlastic = rootView.findViewById(R.id.quantities_view_plastic);
+
+        ImageButton buttonMinusPaperboard = (ImageButton) viewPaperboard.findViewById(R.id
+                .partial_material_image_button_minus);
+        buttonMinusPaperboard.setTag(1);
+        buttonMinusPaperboard.setOnClickListener(minusOne);
+        ImageButton buttonPlusPaperboard = (ImageButton) viewPaperboard.findViewById(R.id
+                .partial_material_image_button_plus);
+        buttonPlusPaperboard.setTag(1);
+        buttonPlusPaperboard.setOnClickListener(plusOne);
+        Spinner spinnerPaperboard = (Spinner) viewPaperboard.findViewById(R.id.partial_material_spinner_container);
+        populateSpinner(spinnerPaperboard);
 
         TextView textPlasticTitle = (TextView) viewPlastic.findViewById(R.id.partial_material_text_paperboard);
         textPlasticTitle.setText(R.string.program_ride_plastic);
         ImageView imagePlastic = (ImageView) viewPlastic.findViewById(R.id.partial_material_image_paperboard);
         imagePlastic.setImageResource(R.mipmap.ic_plastic);
+        ImageButton buttonMinus = (ImageButton) viewPlastic.findViewById(R.id.partial_material_image_button_minus);
+        buttonMinus.setTag(2);
+        buttonMinus.setOnClickListener(minusOne);
+        ImageButton buttonPlus = (ImageButton) viewPlastic.findViewById(R.id.partial_material_image_button_plus);
+        buttonPlus.setTag(2);
+        buttonPlus.setOnClickListener(plusOne);
         Spinner spinnerPlastic = (Spinner) viewPlastic.findViewById(R.id.partial_material_spinner_container);
         populateSpinner(spinnerPlastic);
-
-        Spinner spinnerPaperboard = (Spinner) viewPaperboard.findViewById(R.id.partial_material_spinner_container);
-        populateSpinner(spinnerPaperboard);
     }
 
     private void populateSpinner(Spinner spinner) {
@@ -115,6 +133,40 @@ public class QuantitiesFragment extends Fragment implements Step {
         adapter.setDropDownViewResource(R.layout.item_spinner);
         spinner.setAdapter(adapter);
     }
+
+    private View.OnClickListener plusOne = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getTag().toString().equals("1")) {
+                TextView textQuantity = (TextView) viewPaperboard.findViewById(R.id.partial_material_text_quantity);
+                int quantity = Integer.valueOf(textQuantity.getText().toString());
+                quantity++;
+                textQuantity.setText(String.valueOf(quantity));
+            } else {
+                TextView textQuantity = (TextView) viewPlastic.findViewById(R.id.partial_material_text_quantity);
+                int quantity = Integer.valueOf(textQuantity.getText().toString());
+                quantity++;
+                textQuantity.setText(String.valueOf(quantity));
+            }
+        }
+    };
+
+    private View.OnClickListener minusOne = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.getTag().toString().equals("1")) {
+                TextView textQuantity = (TextView) viewPaperboard.findViewById(R.id.partial_material_text_quantity);
+                int quantity = Integer.valueOf(textQuantity.getText().toString());
+                quantity--;
+                textQuantity.setText(String.valueOf(quantity));
+            } else {
+                TextView textQuantity = (TextView) viewPlastic.findViewById(R.id.partial_material_text_quantity);
+                int quantity = Integer.valueOf(textQuantity.getText().toString());
+                quantity--;
+                textQuantity.setText(String.valueOf(quantity));
+            }
+        }
+    };
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

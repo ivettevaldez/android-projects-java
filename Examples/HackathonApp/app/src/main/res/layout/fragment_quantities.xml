@@ -8,8 +8,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingBottom="20dp"
-        android:paddingEnd="20dp"
-        android:paddingStart="20dp"
+        android:paddingEnd="15dp"
+        android:paddingStart="15dp"
         android:paddingTop="30dp">
 
         <TextView
