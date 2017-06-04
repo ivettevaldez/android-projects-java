@@ -9,20 +9,21 @@
                 android:padding="16dp"
                 tools:context=".views.activities.SplashActivity">
 
-    <TextView
-        android:id="@+id/splash_text_logo"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_centerInParent="true"
+        android:background="@mipmap/img_bg_shapes">
+
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:paddingBottom="16dp"
-        android:text="@string/splash_logo"
-        android:textColor="@color/colorDark"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@mipmap/img_app_logo"
+        app:srcCompat="@mipmap/img_app_logo"/>
 
     <TextView
         android:id="@+id/splash_text_copyright"
@@ -31,6 +32,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/splash_copyright"
-        android:textSize="18sp"/>
+        android:textColor="@color/hint_grey"/>
 
 </RelativeLayout>

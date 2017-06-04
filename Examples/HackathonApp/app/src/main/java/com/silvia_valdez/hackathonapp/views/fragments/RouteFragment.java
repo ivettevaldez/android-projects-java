@@ -49,6 +49,7 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
     private static final int ZOOM = 14;
 
     private static Context mContext;
+    private static View rootView;
     private GoogleMap mMap;
     private Marker mFirstLocationMarker;
     private OnFragmentInteractionListener mListener;
@@ -83,7 +84,9 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_route, container, false);
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_route, container, false);
+        }
         verifyLocationPermissions();
         setUpFonts(rootView);
 
@@ -93,6 +96,12 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
         mapFragment.getMapAsync(this);
 
         return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        rootView = null;
     }
 
     private boolean verifyLocationPermissions() {

@@ -44,7 +44,7 @@
 
     <!-- SplashActivity-->
     <string name="splash_logo">Hackathon</string>
-    <string name="splash_copyright">Hackathon 2017</string>
+    <string name="splash_copyright">#HackathonCCI 2017</string>
 
 
     <!-- IntroActivity -->
@@ -117,5 +117,11 @@
 
     <!-- RouteFragment -->
     <string name="route_instructions_1">3. Selecciona el centro de acopio al que irás.</string>
+
+
+    <!-- ScheduleFragment -->
+    <string name="schedule_instructions_1">4. ¿Cuándo planeas\nhacer el viaje?</string>
+    <string name="schedule_date">Fecha del viaje</string>
+    <string name="schedule_time">Hora del viaje</string>
 
 </resources>

@@ -44,7 +44,7 @@ public class ProgramRideStepperAdapter extends AbstractFragmentStepAdapter {
                 return RouteFragment.newInstance(mContext);
 
             case 3:
-                return ScheduleFragment.newInstance();
+                return ScheduleFragment.newInstance(mContext);
         }
 //
 //        Bundle b = new Bundle();

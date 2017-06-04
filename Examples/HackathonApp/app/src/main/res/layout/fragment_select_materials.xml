@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingBottom="20dp"
+        android:paddingBottom="10dp"
         android:paddingEnd="20dp"
         android:paddingStart="20dp"
         android:paddingTop="30dp">
@@ -207,14 +207,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <FrameLayout
                 android:id="@+id/select_material_frame_aluminium"
                 style="@drawable/selector_button_materials"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
-                android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_button_materials"
                 android:clickable="true"
@@ -249,7 +253,10 @@
                 style="@drawable/selector_button_materials"
                 android:layout_width="match_parent"
                 android:layout_height="145dp"
-                android:layout_margin="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/selector_button_materials"
                 android:clickable="true"
