@@ -226,7 +226,8 @@
         android:elevation="7dp"
         android:fadingEdge="horizontal|vertical"
         android:fadingEdgeLength="10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:tag="1">
 
         <FrameLayout
             android:layout_width="wrap_content"

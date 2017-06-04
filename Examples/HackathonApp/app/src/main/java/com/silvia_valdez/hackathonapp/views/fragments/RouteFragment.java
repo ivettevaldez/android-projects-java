@@ -3,7 +3,9 @@ package com.silvia_valdez.hackathonapp.views.fragments;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -27,8 +30,15 @@ import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.FontHelper;
 import com.silvia_valdez.hackathonapp.helpers.RequestPermissionsHelper;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
+import com.silvia_valdez.hackathonapp.services.HttpClientService;
+import com.silvia_valdez.hackathonapp.services.RideRequestsService;
+import com.silvia_valdez.hackathonapp.services.delegates.IRideRequestsServiceDelegate;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -40,11 +50,14 @@ import java.util.ArrayList;
  * Use the {@link RouteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RouteFragment extends Fragment implements Step, OnMapReadyCallback {
+public class RouteFragment extends Fragment implements Step, OnMapReadyCallback, IRideRequestsServiceDelegate {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private static final float MY_CAPTURES_COLOR = BitmapDescriptorFactory.HUE_AZURE;
+    private static final float THEIR_CAPTURES_COLOR = BitmapDescriptorFactory.HUE_RED;
 
     private static final int ZOOM = 14;
 
@@ -96,6 +109,17 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
         mapFragment.getMapAsync(this);
 
         return rootView;
+    }
+
+    private void getData(double latitude, double longitude) {
+        HttpClientService httpClientService = new HttpClientService(mContext);
+
+        if (httpClientService.isNetworkAvailable()) {
+            RideRequestsService mapCapturesService = new RideRequestsService(RouteFragment.this);
+            mapCapturesService.getRideRequests(latitude, longitude);
+        } else {
+            UtilHelper.showToast(mContext, getString(R.string.error_no_internet_connection));
+        }
     }
 
     @Override
@@ -199,7 +223,7 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
             public void onMyLocationChange(Location arg0) {
                 if (mFirstLocationMarker == null) {
                     // Get all the captures done by me and by others
-//                    getData(arg0.getLatitude(), arg0.getLongitude());
+                    getData(arg0.getLatitude(), arg0.getLongitude());
 
                     // Get the actual location through GPS and do zoom to it
                     zoomToLocation(arg0.getLatitude(), arg0.getLongitude());
@@ -229,6 +253,60 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
         mMap.animateCamera(myLocation);
     }
 
+    @Override
+    public void onRideRequestsSuccess(final JSONObject requests) {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+//                  // Just in case
+                  Bitmap mineIcon = resizeMapIcon(R.mipmap.ic_collection_center, 230, 230);
+                  Bitmap theirsIcon = resizeMapIcon(R.mipmap.ic_collection_request, 250, 250);
+
+                    if (requests.optJSONArray("done_by_me") != null) {
+                        JSONArray doneByMe = requests.getJSONArray("done_by_me");
+
+                        for (int i = 0; i < doneByMe.length(); i++) {
+                            JSONObject capture = doneByMe.getJSONObject(i);
+                            double latitude = capture.getDouble("latitude");
+                            double longitude = capture.getDouble("longitude");
+
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+                                    .icon(BitmapDescriptorFactory.fromBitmap(mineIcon)));
+
+//                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+//                                    .icon(BitmapDescriptorFactory.defaultMarker(MY_CAPTURES_COLOR)));
+                        }
+                    }
+                    if (requests.optJSONArray("done_by_others") != null) {
+                        JSONArray doneByOthers = requests.getJSONArray("done_by_others");
+
+                        for (int i = 0; i < doneByOthers.length(); i++) {
+                            JSONObject capture = doneByOthers.getJSONObject(i);
+                            double latitude = capture.getDouble("latitude");
+                            double longitude = capture.getDouble("longitude");
+
+                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+                                    .icon(BitmapDescriptorFactory.fromBitmap(theirsIcon
+
+                                    )));
+
+//                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+//                                    .icon(BitmapDescriptorFactory.defaultMarker(THEIR_CAPTURES_COLOR)));
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onRideRequestsFail(String error) {
+
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -242,5 +320,12 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    // Just in case
+    public Bitmap resizeMapIcon(int resource, int width, int height) {
+        BitmapDrawable bitmapDraw = (BitmapDrawable) getResources().getDrawable(resource);
+        Bitmap bitmap = bitmapDraw.getBitmap();
+        return Bitmap.createScaledBitmap(bitmap, width, height, false);
     }
 }

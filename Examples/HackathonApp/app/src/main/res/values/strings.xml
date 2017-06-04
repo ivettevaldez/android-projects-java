@@ -22,6 +22,8 @@
     <string name="error_access_token_not_found">Access Token not found.</string>
     <string name="error_no_access_token">Internal server error. No Access Token for U.</string>
     <string name="error_standard_msg">Ha ocurrido un problema con el servidor, intente de nuevo más tarde.</string>
+    <string name="error_no_internet_connection">Por favor, revise su conexión a Internet.
+        No es posible obtener los datos.</string>
 
     <!-- Actions -->
     <string name="action_sign_in">Inicia sesión</string>

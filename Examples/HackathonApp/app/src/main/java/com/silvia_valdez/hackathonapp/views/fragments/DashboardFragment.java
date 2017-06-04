@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import com.silvia_valdez.hackathonapp.helpers.SessionManager;
 import com.silvia_valdez.hackathonapp.services.DashboardService;
 import com.silvia_valdez.hackathonapp.services.HttpClientService;
 import com.silvia_valdez.hackathonapp.services.delegates.IDashboardServiceDelegate;
+import com.silvia_valdez.hackathonapp.views.controls.MenuTabs;
 
 import org.json.JSONObject;
 
@@ -144,6 +146,12 @@ public class DashboardFragment extends Fragment implements IDashboardServiceDele
         mPopularityChart = (LineChart) rootView.findViewById(R.id.dashboard_frag_chart_popularity);
         mProgressView = rootView.findViewById(R.id.dashboard_progress);
         mPopularityLayout = (LinearLayout) rootView.findViewById(R.id.dashboard_frag_layout_popularity);
+
+        ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.dashboard_layout_container);
+        MenuTabs menuTabs = new MenuTabs(viewPager);
+
+        LinearLayout layoutProgrammedRide = (LinearLayout) rootView.findViewById(R.id.dashboard_frag_layout_card);
+        layoutProgrammedRide.setOnClickListener(menuTabs.goToSection);
     }
 
     private void setUpFonts(View rootView) {

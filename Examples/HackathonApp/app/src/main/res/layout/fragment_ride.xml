@@ -2,19 +2,16 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
+             android:background="@color/white"
              tools:context="com.silvia_valdez.hackathonapp.views.fragments.RideFragment">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/ride_fragment_title"/>
 
     <Button
         android:id="@+id/ride_frag_button_recyclables"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
+        android:layout_gravity="center"
         android:layout_marginBottom="16dp"
+        android:layout_marginTop="15dp"
         android:text="@string/program_ride_activity_title"/>
 
 </FrameLayout>

@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBar;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
+import android.widget.Toast;
 
 import com.silvia_valdez.hackathonapp.R;
 
@@ -18,6 +19,16 @@ import static android.content.Context.LOCATION_SERVICE;
  */
 
 public class UtilHelper {
+
+    private static Toast mToast;
+
+    public static void showToast(Context context, String message) {
+        if (mToast != null) {
+            mToast.cancel();
+        }
+        mToast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        mToast.show();
+    }
 
     public static void changeActionBarTextColor(Context context, ActionBar actionBar, String title) {
         SpannableString spannableString = new SpannableString(title);

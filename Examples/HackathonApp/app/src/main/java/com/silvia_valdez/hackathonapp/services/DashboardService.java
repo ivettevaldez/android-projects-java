@@ -83,25 +83,6 @@ public class DashboardService {
                     }
                 }
             }
-//            if (response.has("pointsPerMonth")) {
-//                JSONArray pointsPerMonth = response.getJSONArray("pointsPerMonth");
-//
-//                if (pointsPerMonth.length() != 0) {
-//
-//                    JSONObject points = pointsPerMonth.getJSONObject(0);
-//                    Log.e(TAG, points.toString());
-//
-//                    if (points.has("id")) {
-//                        rideId = JsonValidationHelper.getIntValue(points, "id");
-//                    }
-//                    if (points.has("rideDate")) {
-//                        rideDate = JsonValidationHelper.getStringValue(points, "rideDate");
-//                    }
-//                    if (points.has("rideTime")) {
-//                        rideTime = JsonValidationHelper.getStringValue(points, "rideTime");
-//                    }
-//                }
-//            }
 
             mDelegate.receiveDashboardSuccess(completedRides, accumulatedPoints, rideId, rideDate, rideTime);
         } catch (JSONException e) {

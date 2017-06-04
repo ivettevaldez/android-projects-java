@@ -15,7 +15,7 @@
         android:background="@android:color/transparent"
         android:padding="15dp"
         android:tag="0"
-        app:srcCompat="@android:drawable/ic_dialog_info"/>
+        app:srcCompat="@mipmap/ic_tab_dashboard"/>
 
     <ImageButton
         android:id="@+id/tabs_button_2"
