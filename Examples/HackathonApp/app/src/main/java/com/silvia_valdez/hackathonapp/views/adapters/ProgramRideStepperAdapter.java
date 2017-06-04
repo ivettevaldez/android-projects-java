@@ -1,12 +1,14 @@
 package com.silvia_valdez.hackathonapp.views.adapters;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.views.fragments.QuantitiesFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.RouteFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.ScheduleFragment;
 import com.silvia_valdez.hackathonapp.views.fragments.SelectMaterialsFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
@@ -27,10 +29,25 @@ public class ProgramRideStepperAdapter extends AbstractFragmentStepAdapter {
 
     @Override
     public Step createStep(int position) {
-        final SelectMaterialsFragment step = new SelectMaterialsFragment();
-        Bundle b = new Bundle();
-        b.putInt(CURRENT_STEP_POSITION_KEY, position);
-        step.setArguments(b);
+        Step step = new SelectMaterialsFragment();
+
+        switch (position) {
+            case 0:
+                return new SelectMaterialsFragment();
+
+            case 1:
+                return QuantitiesFragment.newInstance();
+
+            case 2:
+                return RouteFragment.newInstance();
+
+            case 3:
+                return ScheduleFragment.newInstance();
+        }
+//
+//        Bundle b = new Bundle();
+//        b.putInt(CURRENT_STEP_POSITION_KEY, position);
+//        step.setArguments(b);
         return step;
     }
 

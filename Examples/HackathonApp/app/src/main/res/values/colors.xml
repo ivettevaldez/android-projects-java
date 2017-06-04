@@ -11,6 +11,7 @@
     <color name="aqua_marine">#1fe2a9</color>
     <color name="caribbean_green">#0fc38e</color>
     <color name="aqua_marine_shadow">#4c0a7b59</color>
+    <color name="green_shadow">#4c10c38e</color>
     <color name="grey_shadow">#26757f7c</color>
 
     <color name="transparent_white_bg">#3fffffff</color>

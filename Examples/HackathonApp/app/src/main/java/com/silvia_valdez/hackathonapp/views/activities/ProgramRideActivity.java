@@ -1,6 +1,7 @@
 package com.silvia_valdez.hackathonapp.views.activities;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,15 +11,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.UtilHelper;
 import com.silvia_valdez.hackathonapp.views.adapters.DashboardPagerAdapter;
 import com.silvia_valdez.hackathonapp.views.adapters.ProgramRidePagerAdapter;
 import com.silvia_valdez.hackathonapp.views.adapters.ProgramRideStepperAdapter;
+import com.silvia_valdez.hackathonapp.views.fragments.QuantitiesFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.RouteFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.ScheduleFragment;
 import com.stepstone.stepper.StepperLayout;
+import com.stepstone.stepper.VerificationError;
 
-public class ProgramRideActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
+public class ProgramRideActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener,
+        StepperLayout.StepperListener, QuantitiesFragment.OnFragmentInteractionListener,
+        RouteFragment.OnFragmentInteractionListener, ScheduleFragment.OnFragmentInteractionListener {
 
     private Context mContext;
     private StepperLayout mStepperLayout;
@@ -110,6 +118,30 @@ public class ProgramRideActivity extends AppCompatActivity implements  Navigatio
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onCompleted(View completeButton) {
+        finish();
+    }
+
+    @Override
+    public void onError(VerificationError verificationError) {
+
+    }
+
+    @Override
+    public void onStepSelected(int newStepPosition) {
+    }
+
+    @Override
+    public void onReturn() {
+
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 
 //    @Override

@@ -88,7 +88,7 @@
     <string name="profile_fragment_title">Mi Perfil</string>
 
 
-    <!-- ProgramRideFragment -->
+    <!-- SelectMaterialFragment -->
     <string name="program_ride_activity_title">Nuevo viaje</string>
     <string name="program_ride_instructions_1">1. Selecciona los\n  materiales que\n  recolectaste.</string>
     <string name="program_ride_own_material">¿Deseas llevar material propio?</string>
@@ -101,5 +101,14 @@
     <string name="program_ride_back">Atrás</string>
     <string name="program_ride_next">Siguiente</string>
     <string name="program_ride_continue">Finalizar</string>
+
+
+    <!-- QuantityFragment -->
+    <string name="quantity_instructions_1">2. Ahora configura\ntus materiales.</string>
+    <string name="quantity_quantity">Cantidad</string>
+    <string name="quantity_container">Tipo de contenedor</string>
+    <string name="quantity_big_bag">Bolsa grande</string>
+    <string name="quantity_instructions_2">Toma una foto de la bolsa donde sólo tienes este material.</string>
+
 
 </resources>

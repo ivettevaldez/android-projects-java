@@ -5,19 +5,19 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.FontHelper;
-import com.silvia_valdez.hackathonapp.helpers.SessionManager;
-import com.silvia_valdez.hackathonapp.services.HttpClientService;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
+
+import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -35,9 +35,8 @@ public class SelectMaterialsFragment extends Fragment implements Step {
     private static Context mContext;
     private boolean gotData = false;
 
-    private static int mRidesNumber = 0;
-    private static float mPointsNumber = 0f;
-    private static String mDate = "";
+    private ArrayList<String> mSelectedItems = new ArrayList<>();
+
 
 
     public SelectMaterialsFragment() {
@@ -50,53 +49,16 @@ public class SelectMaterialsFragment extends Fragment implements Step {
         initVariables(rootView);
         setUpFonts(rootView);
 
-        if (!gotData) {
-            SessionManager sessionManager = new SessionManager(mContext);
-            Log.e(TAG, sessionManager.getUser());
-
-            loadData();
-        } else {
-//            setFields();
-        }
         return rootView;
-
-//        int sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-        // TextView textView = (TextView) rootView.findViewById(R.id.frag_intro_text_section);
-        // textView.setText(getString(R.string.intro_section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-    }
-
-    private void loadData() {
-        final HttpClientService httpClientService = new HttpClientService(mContext);
-        if (httpClientService.isNetworkAvailable()) {
-//            showProgress(true);
-//            new Thread(new Runnable() {
-//                @Override
-//                public void run() {
-//                    JSONObject response = httpClientService.performHttpGetObject(DASHBOARD_URL);
-//
-//                    if (response != null) {
-//                        DashboardService dashboardService = new DashboardService(getActivity(), SelectMaterialsFragment.this);
-//                        dashboardService.validateDashboardResponse(response);
-//                        gotData = true;
-//                    } else {
-//                        Log.e(TAG, "NULL RESPONSE");
-//                    }
-//                }
-//            }).start();
-
-        } else {
-            Toast.makeText(mContext, "Revise su conexion a internet", Toast.LENGTH_SHORT).show();
-        }
     }
 
     /**
      * Returns a new instance of this fragment for the given section
      * number.
-     *
+     * <p>
      * dashboard
      * rides
      * profile
-     *
      */
     public static SelectMaterialsFragment newInstance(Context context) {
         SelectMaterialsFragment fragment = new SelectMaterialsFragment();
@@ -108,7 +70,43 @@ public class SelectMaterialsFragment extends Fragment implements Step {
 
     private void initVariables(View rootView) {
         mContext = getContext();
+
+//        ImageView imagePaperboard = (ImageView) rootView.findViewById(R.id.select_material_image_paperboard);
+//        ImageView imagePlastic = (ImageView) rootView.findViewById(R.id.select_material_image_plastic);
+//        ImageView imageNewspaper = (ImageView) rootView.findViewById(R.id.select_material_image_newspaper);
+//        ImageView imageGlass = (ImageView) rootView.findViewById(R.id.select_material_image_glass);
+//        ImageView imageAluminium = (ImageView) rootView.findViewById(R.id.select_material_image_aluminium);
+//        ImageView imagePaper = (ImageView) rootView.findViewById(R.id.select_material_image_paper);
+
+        FrameLayout framePaperboard = (FrameLayout) rootView.findViewById(R.id.select_material_frame_paperboard);
+        FrameLayout framePlastic = (FrameLayout) rootView.findViewById(R.id.select_material_frame_plastic);
+        FrameLayout frameNewspaper = (FrameLayout) rootView.findViewById(R.id.select_material_frame_newspaper);
+        FrameLayout frameGlass = (FrameLayout) rootView.findViewById(R.id.select_material_frame_glass);
+        FrameLayout frameAluminium = (FrameLayout) rootView.findViewById(R.id.select_material_frame_aluminium);
+        FrameLayout framePaper = (FrameLayout) rootView.findViewById(R.id.select_material_frame_paper);
+
+        framePaperboard.setOnTouchListener(changeStyle);
+        framePlastic.setOnTouchListener(changeStyle);
+        frameNewspaper.setOnTouchListener(changeStyle);
+        frameGlass.setOnTouchListener(changeStyle);
+        frameAluminium.setOnTouchListener(changeStyle);
+        framePaper.setOnTouchListener(changeStyle);
     }
+
+    private View.OnTouchListener changeStyle = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            if (v.isPressed()) {
+                v.setPressed(false);
+                mSelectedItems.remove(v.getTag().toString());
+            } else {
+                v.setPressed(true);
+                mSelectedItems.add(v.getTag().toString());
+            }
+//            v.setPressed(!v.isPressed());
+            return true;
+        }
+    };
 
     private void setUpFonts(View rootView) {
         // Setup Fonts.
