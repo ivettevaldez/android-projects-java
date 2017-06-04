@@ -13,14 +13,33 @@
         android:paddingTop="30dp">
 
         <TextView
-            android:id="@+id/select_material_text_info"
+            android:id="@+id/quantities_text_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="10dp"
             android:layout_marginStart="10dp"
             android:text="@string/quantity_instructions_1"
             android:textColor="@color/charcoal_grey"
             android:textSize="27sp"/>
+
+        <include
+            android:id="@+id/quantities_view_paperboard"
+            layout="@layout/partial_material_quantity"
+            layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"/>
+
+        <include
+            android:id="@+id/quantities_view_plastic"
+            layout="@layout/partial_material_quantity"
+            layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="7dp"/>
 
     </LinearLayout>
 

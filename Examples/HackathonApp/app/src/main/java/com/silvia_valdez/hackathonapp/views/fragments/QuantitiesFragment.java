@@ -1,6 +1,7 @@
 package com.silvia_valdez.hackathonapp.views.fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +9,18 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.helpers.FontHelper;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +37,7 @@ public class QuantitiesFragment extends Fragment implements Step {
     private static final String ARG_PARAM2 = "param2";
 
 
+    private static Context mContext;
     private OnFragmentInteractionListener mListener;
 
     public QuantitiesFragment() {
@@ -41,7 +51,8 @@ public class QuantitiesFragment extends Fragment implements Step {
      * @return A new instance of fragment QuantitiesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static QuantitiesFragment newInstance() {
+    public static QuantitiesFragment newInstance(Context context) {
+        mContext = context;
         QuantitiesFragment fragment = new QuantitiesFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
@@ -59,7 +70,50 @@ public class QuantitiesFragment extends Fragment implements Step {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quantities, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_quantities, container, false);
+        setUpFonts(rootView);
+        setUpViews(rootView);
+        return rootView;
+    }
+
+    private void setUpFonts(View rootView) {
+        // Setup Fonts.
+        FontHelper fontHelper = new FontHelper(mContext);
+
+        Typeface medium = fontHelper.getRobotoMedium();
+
+        TextView textInstructions = (TextView) rootView.findViewById(R.id.quantities_text_info);
+        textInstructions.setTypeface(medium);
+    }
+
+    private void setUpViews(View rootView) {
+        View viewPaperboard = rootView.findViewById(R.id.quantities_view_paperboard);
+        View viewPlastic = rootView.findViewById(R.id.quantities_view_plastic);
+
+        TextView textPlasticTitle = (TextView) viewPlastic.findViewById(R.id.partial_material_text_paperboard);
+        textPlasticTitle.setText(R.string.program_ride_plastic);
+        ImageView imagePlastic = (ImageView) viewPlastic.findViewById(R.id.partial_material_image_paperboard);
+        imagePlastic.setImageResource(R.mipmap.ic_plastic);
+        Spinner spinnerPlastic = (Spinner) viewPlastic.findViewById(R.id.partial_material_spinner_container);
+        populateSpinner(spinnerPlastic);
+
+        Spinner spinnerPaperboard = (Spinner) viewPaperboard.findViewById(R.id.partial_material_spinner_container);
+        populateSpinner(spinnerPaperboard);
+    }
+
+    private void populateSpinner(Spinner spinner) {
+        // you need to have a list of data that you want the spinner to display
+        List<String> spinnerArray = new ArrayList<>();
+        spinnerArray.add(getString(R.string.default_big_bag));
+        spinnerArray.add(getString(R.string.default_medium_bag));
+        spinnerArray.add(getString(R.string.default_small_bag));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                getActivity(), R.layout.item_spinner, spinnerArray);
+
+        adapter.setDropDownViewResource(R.layout.item_spinner);
+        spinner.setAdapter(adapter);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

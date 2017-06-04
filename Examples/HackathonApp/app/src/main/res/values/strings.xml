@@ -109,6 +109,9 @@
     <string name="quantity_container">Tipo de contenedor</string>
     <string name="quantity_big_bag">Bolsa grande</string>
     <string name="quantity_instructions_2">Toma una foto de la bolsa donde sólo tienes este material.</string>
+    <string name="default_big_bag">Bolsa grande</string>
+    <string name="default_medium_bag">Bolsa mediana</string>
+    <string name="default_small_bag">Bolsa pequeña</string>
 
 
 </resources>

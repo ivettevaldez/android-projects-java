@@ -22,9 +22,11 @@ public class ProgramRideStepperAdapter extends AbstractFragmentStepAdapter {
 
     private static final String CURRENT_STEP_POSITION_KEY = "CURRENT_STEP_POSITION_KEY";
 
+    private Context mContext;
 
     public ProgramRideStepperAdapter(FragmentManager fm, Context context) {
         super(fm, context);
+        mContext = context;
     }
 
     @Override
@@ -36,7 +38,7 @@ public class ProgramRideStepperAdapter extends AbstractFragmentStepAdapter {
                 return new SelectMaterialsFragment();
 
             case 1:
-                return QuantitiesFragment.newInstance();
+                return QuantitiesFragment.newInstance(mContext);
 
             case 2:
                 return RouteFragment.newInstance();
