@@ -64,6 +64,13 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
     }
 
     @Override
+    public void onRestart() {
+        super.onRestart();
+        menuTabs = new MenuTabs(mViewPager);
+        menuTabs.goToSection(0);
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {

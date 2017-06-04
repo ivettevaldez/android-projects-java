@@ -191,7 +191,7 @@ public class DashboardFragment extends Fragment implements IDashboardServiceDele
             dayOfWeek = String.format("%s%s", dayOfWeek.substring(0, 1).toUpperCase(), dayOfWeek.substring(1));
             month = String.format("%s%s", month.substring(0, 1).toUpperCase(), month.substring(1));
 
-            mDate = String.format("%s %s de %s", dayOfWeek, day, month);
+            mDate = "12 de Junio";
         } catch (ParseException e) {
             e.printStackTrace();
         }

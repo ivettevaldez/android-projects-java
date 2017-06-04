@@ -27,4 +27,8 @@ public class MenuTabs {
         }
     };
 
+    public void goToSection(int position) {
+        mViewPager.setCurrentItem(position, true);
+    }
+
 }

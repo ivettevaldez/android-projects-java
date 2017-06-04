@@ -12,9 +12,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -50,7 +55,8 @@ import java.util.ArrayList;
  * Use the {@link RouteFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RouteFragment extends Fragment implements Step, OnMapReadyCallback, IRideRequestsServiceDelegate {
+public class RouteFragment extends Fragment implements Step, OnMapReadyCallback, IRideRequestsServiceDelegate,
+        GoogleMap.OnMarkerClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -66,6 +72,7 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
     private GoogleMap mMap;
     private Marker mFirstLocationMarker;
     private OnFragmentInteractionListener mListener;
+    private ArrayList<Marker> mCollectionCenters;
 
     public RouteFragment() {
         // Required empty public constructor
@@ -107,6 +114,7 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getChildFragmentManager().findFragmentById(R.id.route_fragment_map);
         mapFragment.getMapAsync(this);
+        mCollectionCenters = new ArrayList<Marker>();
 
         return rootView;
     }
@@ -217,6 +225,7 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
         mMap.setMyLocationEnabled(true);
         mMap.getMyLocation();
         mMap.getMaxZoomLevel();
+        mMap.setOnMarkerClickListener(this);
 
         mMap.setOnMyLocationChangeListener(new GoogleMap.OnMyLocationChangeListener() {
             @Override
@@ -259,9 +268,9 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
             @Override
             public void run() {
                 try {
-//                  // Just in case
-                  Bitmap mineIcon = resizeMapIcon(R.mipmap.ic_collection_center, 230, 230);
-                  Bitmap theirsIcon = resizeMapIcon(R.mipmap.ic_collection_request, 250, 250);
+                    Marker marker;
+                    Bitmap mineIcon = resizeMapIcon(R.mipmap.ic_collection_center, 230, 230);
+                    Bitmap theirsIcon = resizeMapIcon(R.mipmap.ic_collection_request, 250, 250);
 
                     if (requests.optJSONArray("done_by_me") != null) {
                         JSONArray doneByMe = requests.getJSONArray("done_by_me");
@@ -271,8 +280,9 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
                             double latitude = capture.getDouble("latitude");
                             double longitude = capture.getDouble("longitude");
 
-                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+                            marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
                                     .icon(BitmapDescriptorFactory.fromBitmap(mineIcon)));
+                            mCollectionCenters.add(marker);
 
 //                            mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
 //                                    .icon(BitmapDescriptorFactory.defaultMarker(MY_CAPTURES_COLOR)));
@@ -305,6 +315,66 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
     @Override
     public void onRideRequestsFail(String error) {
 
+    }
+
+    private void showDetail(View v, ViewGroup parent) {
+//        int entryId = (int) v.getTag();
+//        getComment(entryId);
+
+        // Popup.
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.partial_request_detail, null);
+        View parentView = (View) parent.getParent();
+
+        final PopupWindow popupWindow = new PopupWindow(
+                popupView,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT,
+                true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable());     // null
+
+        FrameLayout layoutClose = (FrameLayout) popupView.findViewById(R.id.request_detail_frame_close);
+        FrameLayout layoutCollect = (FrameLayout) popupView.findViewById(R.id.request_detail_frame_collect);
+
+        layoutClose.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        layoutCollect.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+
+//        mTextHeader = (TextView) popupView.findViewById(R.id.partial_daily_brief_text_header);
+//        setUpFonts(mTextHeader, "medium");
+//
+//        mTextSource = (TextView) popupView.findViewById(R.id.partial_daily_brief_text_link);
+//        setUpFonts(mTextSource, "italic");
+//
+//        mTextComment = (TextView) popupView.findViewById(R.id.partial_daily_brief_text_comment);
+//        setUpFonts(mTextComment, "italic");
+
+        popupWindow.showAtLocation(parentView, Gravity.CENTER, 0, 0);
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        ViewGroup layout = (ViewGroup) rootView.findViewById(R.id.fragment_route_layout);
+        if (mCollectionCenters.contains(marker)) {
+            // Proceed with Collection Center
+            Bitmap mineIcon = resizeMapIcon(R.mipmap.ic_collection_center_selected, 230, 230);
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(mineIcon));
+        } else {
+            // Proceed with Collection Request
+            showDetail(layout, layout);
+            Bitmap mineIcon = resizeMapIcon(R.mipmap.ic_collection_request_selected, 250, 250);
+            marker.setIcon(BitmapDescriptorFactory.fromBitmap(mineIcon));
+        }
+        return false;
     }
 
     /**

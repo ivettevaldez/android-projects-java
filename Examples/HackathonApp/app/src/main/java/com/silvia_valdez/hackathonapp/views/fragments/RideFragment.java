@@ -2,14 +2,21 @@ package com.silvia_valdez.hackathonapp.views.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 
 import com.silvia_valdez.hackathonapp.R;
 import com.silvia_valdez.hackathonapp.helpers.RequestPermissionsHelper;
@@ -33,7 +40,7 @@ public class RideFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    private static Context mContext;
     private OnFragmentInteractionListener mListener;
 
     public RideFragment() {
@@ -50,7 +57,8 @@ public class RideFragment extends Fragment {
      * @return A new instance of fragment RideFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static RideFragment newInstance() {
+    public static RideFragment newInstance(Context context) {
+        mContext = context;
         RideFragment fragment = new RideFragment();
         Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
@@ -77,7 +85,17 @@ public class RideFragment extends Fragment {
 //        }
 //        getActionBar().setTitle(getString(R.string.lift_fragment_title));
         View rootView = inflater.inflate(R.layout.fragment_ride, container, false);
-        onButtonPressed(rootView);
+        FloatingActionButton floatingActionButton = (FloatingActionButton)
+                rootView.findViewById(R.id.floatingActionButton);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                verifyLocationPermissions();
+                Intent intent = new Intent(getActivity(), ProgramRideActivity.class);
+                startActivity(intent);
+            }
+        });
+//        onButtonPressed(rootView);
         return rootView;
     }
 

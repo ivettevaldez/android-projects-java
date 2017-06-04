@@ -3,6 +3,7 @@ package com.silvia_valdez.hackathonapp.views.activities;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -68,6 +69,21 @@ public class ProgramRideActivity extends AppCompatActivity implements Navigation
 //        navigationView.setNavigationItemSelectedListener(this);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mStepperLayout.getCurrentStepPosition() == 3) {
+            UtilHelper.showToast(mContext, "Tu viaje fue programado");
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            }, 1000);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     public void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
 //            getSupportActionBar().setTitle(title);
@@ -121,7 +137,7 @@ public class ProgramRideActivity extends AppCompatActivity implements Navigation
 
     @Override
     public void onCompleted(View completeButton) {
-        finish();
+        this.finish();
     }
 
     @Override
@@ -143,8 +159,4 @@ public class ProgramRideActivity extends AppCompatActivity implements Navigation
 
     }
 
-//    @Override
-//    public void onFragmentInteraction(Uri uri) {
-//
-//    }
 }

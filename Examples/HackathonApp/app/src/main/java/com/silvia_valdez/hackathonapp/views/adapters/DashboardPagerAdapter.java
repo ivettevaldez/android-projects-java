@@ -35,7 +35,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return DashboardFragment.newInstance(mContext);
             case 1:
-                return RideFragment.newInstance();
+                return RideFragment.newInstance(mContext);
             case 2:
                 return ProfileFragment.newInstance();
         }
