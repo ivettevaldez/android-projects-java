@@ -122,11 +122,10 @@ public class DashboardFragment extends Fragment implements IDashboardServiceDele
     /**
      * Returns a new instance of this fragment for the given section
      * number.
-     *
+     * <p>
      * dashboard
      * rides
      * profile
-     *
      */
     public static DashboardFragment newInstance(Context context) {
         DashboardFragment fragment = new DashboardFragment();

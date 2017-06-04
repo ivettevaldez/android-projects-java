@@ -6,6 +6,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="default_zero">0</string>
     <string name="default_zero_rides">0 viajes</string>
+    <string name="default_im_here">Estoy aquí</string>
 
 
     <!-- MESSAGES -->
@@ -113,5 +114,8 @@
     <string name="default_medium_bag">Bolsa mediana</string>
     <string name="default_small_bag">Bolsa pequeña</string>
 
+
+    <!-- RouteFragment -->
+    <string name="route_instructions_1">3. Selecciona el centro de acopio al que irás.</string>
 
 </resources>

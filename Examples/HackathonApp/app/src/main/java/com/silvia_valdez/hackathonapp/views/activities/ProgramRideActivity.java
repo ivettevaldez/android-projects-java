@@ -24,7 +24,7 @@ import com.silvia_valdez.hackathonapp.views.fragments.ScheduleFragment;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-public class ProgramRideActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener,
+public class ProgramRideActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,
         StepperLayout.StepperListener, QuantitiesFragment.OnFragmentInteractionListener,
         RouteFragment.OnFragmentInteractionListener, ScheduleFragment.OnFragmentInteractionListener {
 

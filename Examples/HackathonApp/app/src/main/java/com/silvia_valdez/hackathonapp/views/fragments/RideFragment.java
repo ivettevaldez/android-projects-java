@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.silvia_valdez.hackathonapp.R;
+import com.silvia_valdez.hackathonapp.helpers.RequestPermissionsHelper;
 import com.silvia_valdez.hackathonapp.views.activities.ProgramRideActivity;
 
 /**
@@ -42,9 +43,10 @@ public class RideFragment extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
+     * <p>
+     * //     * @param param1 Parameter 1.
+     * //     * @param param2 Parameter 2.
      *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
      * @return A new instance of fragment RideFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -85,10 +87,16 @@ public class RideFragment extends Fragment {
         buttonRecyclables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                verifyLocationPermissions();
                 Intent intent = new Intent(getActivity(), ProgramRideActivity.class);
                 startActivity(intent);
             }
         });
+    }
+
+    private boolean verifyLocationPermissions() {
+        RequestPermissionsHelper permissionsHelper = RequestPermissionsHelper.getInstance(getActivity());
+        return permissionsHelper.verifyLocationPermissions();
     }
 
     @Override

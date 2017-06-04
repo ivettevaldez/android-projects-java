@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.silvia_valdez.hackathonapp.views.fragments.DashboardFragment;
-import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
 import com.silvia_valdez.hackathonapp.views.fragments.ProfileFragment;
+import com.silvia_valdez.hackathonapp.views.fragments.RideFragment;
 
 /**
  * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -31,7 +31,7 @@ public class DashboardPagerAdapter extends FragmentPagerAdapter {
         // Return a DashboardFragment (defined as a static inner class below).
 //        return DashboardFragment.newInstance(position + 1);
 
-        switch (position){
+        switch (position) {
             case 0:
                 return DashboardFragment.newInstance(mContext);
             case 1:

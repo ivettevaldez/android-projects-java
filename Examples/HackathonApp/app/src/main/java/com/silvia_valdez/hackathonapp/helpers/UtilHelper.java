@@ -1,6 +1,7 @@
 package com.silvia_valdez.hackathonapp.helpers;
 
 import android.content.Context;
+import android.location.LocationManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.text.Spannable;
@@ -8,6 +9,8 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 
 import com.silvia_valdez.hackathonapp.R;
+
+import static android.content.Context.LOCATION_SERVICE;
 
 /**
  * Utility class for generic purposes.
@@ -24,6 +27,11 @@ public class UtilHelper {
         if (actionBar != null) {
             actionBar.setTitle(spannableString);
         }
+    }
+
+    public static boolean isGpsEnabled(Context context) {
+        LocationManager locationManager = (LocationManager) context.getSystemService(LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
     }
 
 }

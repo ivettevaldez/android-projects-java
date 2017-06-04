@@ -38,7 +38,6 @@ public class SelectMaterialsFragment extends Fragment implements Step {
     private ArrayList<String> mSelectedItems = new ArrayList<>();
 
 
-
     public SelectMaterialsFragment() {
     }
 
@@ -146,6 +145,7 @@ public class SelectMaterialsFragment extends Fragment implements Step {
     public void onError(@NonNull VerificationError error) {
         //handle error inside of the fragment, e.g. show error on EditText
     }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

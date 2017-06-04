@@ -31,7 +31,7 @@ public class ProgramRidePagerAdapter extends FragmentPagerAdapter {
         // Return a DashboardFragment (defined as a static inner class below).
 //        return DashboardFragment.newInstance(position + 1);
 
-        switch (position){
+        switch (position) {
             case 0:
                 return SelectMaterialsFragment.newInstance(mContext);
             case 1:
