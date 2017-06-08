@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical"
+              tools:context="com.silvia_valdez.ressi_app.views.fragments.ScheduleFragment">
+
+    <TextView
+        android:id="@+id/schedule_text_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:text="@string/schedule_instructions_1"
+        android:textColor="@color/charcoal_grey"
+        android:textSize="27sp"/>
+
+    <Spinner
+        android:id="@+id/schedule_spinner_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:background="@color/charcoal_grey">
+
+    </FrameLayout>
+
+    <Spinner
+        android:id="@+id/schedule_spinner_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:background="@color/charcoal_grey">
+
+    </FrameLayout>
+
+</LinearLayout>
