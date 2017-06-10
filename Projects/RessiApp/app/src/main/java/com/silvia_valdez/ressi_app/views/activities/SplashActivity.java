@@ -1,7 +1,6 @@
 package com.silvia_valdez.ressi_app.views.activities;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,20 +11,13 @@ public class SplashActivity extends Activity {
 
     private static final int DELAY_TIME = 1500;
 
-    private Context context;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        initVariables();
         waitAMoment();
-    }
-
-    private void initVariables() {
-        context = getApplicationContext();
     }
 
     private void waitAMoment() {

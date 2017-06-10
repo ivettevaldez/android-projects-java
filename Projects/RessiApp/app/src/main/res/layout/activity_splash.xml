@@ -5,11 +5,12 @@
                 android:id="@+id/splash_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorPrimary"
+                android:background="@color/white"
                 android:padding="16dp"
                 tools:context=".views.activities.SplashActivity">
 
     <FrameLayout
+        android:id="@+id/splash_frame_logo"
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_centerInParent="true"
@@ -18,12 +19,13 @@
     </FrameLayout>
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/splash_image_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:src="@mipmap/img_app_logo"
-        app:srcCompat="@mipmap/img_app_logo"/>
+        app:srcCompat="@mipmap/img_app_logo"
+        tools:ignore="ContentDescription"/>
 
     <TextView
         android:id="@+id/splash_text_copyright"
