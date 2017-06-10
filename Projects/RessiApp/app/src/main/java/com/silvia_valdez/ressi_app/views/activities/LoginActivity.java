@@ -24,11 +24,14 @@ import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.silvia_valdez.ressi_app.R;
@@ -102,7 +105,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mContext = getApplicationContext();
         mActionBar = getSupportActionBar();
         mEmailSignInButton = (Button) findViewById(R.id.login_button_sign_in);
-        mLoginFormView = findViewById(R.id.login_scroll_form);
+        mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
         mEmailView = (AutoCompleteTextView) findViewById(R.id.login_auto_email);
         mPasswordView = (EditText) findViewById(R.id.login_edit_password);
@@ -126,6 +129,22 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     return true;
                 }
                 return false;
+            }
+        });
+
+        mLoginFormView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                LinearLayout rootView = (LinearLayout) findViewById(R.id.login_layout);
+                FrameLayout frameLogo = (FrameLayout) findViewById(R.id.login_frame_logo);
+
+                int heightDiff = rootView.getRootView().getHeight() - rootView.getHeight();
+
+                if (heightDiff > 100) {
+                    frameLogo.setBackgroundResource(0);
+                } else {
+                    frameLogo.setBackgroundResource(R.mipmap.img_bg_shapes);
+                }
             }
         });
 
@@ -267,28 +286,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mLoginFormView.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
             mLoginFormView.animate().setDuration(shortAnimTime).alpha(
                     show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                    mLoginFormView.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
                 }
             });
 
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mProgressView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
             mProgressView.animate().setDuration(shortAnimTime).alpha(
                     show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                    mProgressView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
                 }
             });
         } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mProgressView.setVisibility(show ? View.VISIBLE : View.INVISIBLE);
+            mLoginFormView.setVisibility(show ? View.INVISIBLE : View.VISIBLE);
         }
     }
 
