@@ -118,7 +118,7 @@
             android:elevation="24dp"
             android:fadingEdge="horizontal|vertical"
             android:fadingEdgeLength="10dp"
-            android:shadowColor="@color/aqua_marine_shadow"
+            android:shadowColor="@color/aqua_marine_30"
             android:text="@string/action_sign_in"
             android:textColor="@color/white"
             android:textSize="16sp"/>
@@ -142,7 +142,7 @@
                 android:gravity="center_horizontal"
                 android:paddingStart="45dp"
                 android:text="@string/login_without_account"
-                android:textColor="@color/steel_grey"/>
+                android:textColor="@color/steel_grey_70"/>
 
             <TextView
                 android:id="@+id/login_text_sign_up"

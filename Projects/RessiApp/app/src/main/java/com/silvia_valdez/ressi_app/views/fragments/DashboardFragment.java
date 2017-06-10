@@ -252,7 +252,7 @@ public class DashboardFragment extends Fragment implements IDashboardServiceDele
         XAxis xAxis = mPopularityChart.getXAxis();
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawLimitLinesBehindData(false);
-        xAxis.setGridColor(ContextCompat.getColor(mContext, R.color.hint_grey));
+        xAxis.setGridColor(ContextCompat.getColor(mContext, R.color.steel_grey_50));
         xAxis.setDrawLabels(false);
 
         // yAxis Parameters (left & right).

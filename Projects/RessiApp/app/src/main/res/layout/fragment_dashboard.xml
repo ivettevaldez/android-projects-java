@@ -133,7 +133,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
                     android:text="@string/dashboard_fragment_info_1"
-                    android:textColor="@color/steel_grey"/>
+                    android:textColor="@color/steel_grey_70"/>
 
                 <TextView
                     android:id="@+id/dashboard_frag_text_rides_number"
@@ -144,7 +144,7 @@
                     android:paddingEnd="5dp"
                     android:paddingStart="5dp"
                     android:text="@string/default_zero_rides"
-                    android:textColor="@color/steel_grey"/>
+                    android:textColor="@color/steel_grey_70"/>
 
                 <TextView
                     android:id="@+id/dashboard_frag_text_info_2"
@@ -153,7 +153,7 @@
                     android:layout_toEndOf="@+id/dashboard_frag_text_rides_number"
                     android:gravity="center_vertical"
                     android:text="@string/dashboard_fragment_info_3"
-                    android:textColor="@color/steel_grey"/>
+                    android:textColor="@color/steel_grey_70"/>
 
                 <TextView
                     android:id="@+id/dashboard_frag_text_info_3"
@@ -163,7 +163,7 @@
                     android:gravity="center_vertical"
                     android:paddingTop="2dp"
                     android:text="@string/dashboard_fragment_info_4"
-                    android:textColor="@color/steel_grey"/>
+                    android:textColor="@color/steel_grey_70"/>
             </RelativeLayout>
 
             <LinearLayout
@@ -257,7 +257,7 @@
                 android:gravity="bottom"
                 android:paddingBottom="5dp"
                 android:text="@string/dashboard_programmed"
-                android:textColor="@color/steel_grey"/>
+                android:textColor="@color/steel_grey_70"/>
 
             <TextView
                 android:id="@+id/dashboard_frag_text_date"

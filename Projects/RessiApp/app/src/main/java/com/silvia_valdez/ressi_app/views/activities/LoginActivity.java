@@ -352,6 +352,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
+        private static final int DELAY_TIME = 1000;
+
         private final String mEmail;
         private final String mPassword;
 
@@ -366,7 +368,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(2000);
+                Thread.sleep(DELAY_TIME);
             } catch (InterruptedException e) {
                 return false;
             }

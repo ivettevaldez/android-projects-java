@@ -10,7 +10,7 @@ import com.silvia_valdez.ressi_app.R;
 
 public class SplashActivity extends Activity {
 
-    private static final int DELAY_TIME = 2000;
+    private static final int DELAY_TIME = 1500;
 
     private Context context;
 

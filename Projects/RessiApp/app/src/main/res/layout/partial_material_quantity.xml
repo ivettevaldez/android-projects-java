@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="@string/quantity_quantity"
-                android:textColor="@color/steel_grey"/>
+                android:textColor="@color/steel_grey_70"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="5dp"
                 android:text="@string/quantity_container"
-                android:textColor="@color/steel_grey"/>
+                android:textColor="@color/steel_grey_70"/>
 
             <Spinner
                 android:id="@+id/partial_material_spinner_container"

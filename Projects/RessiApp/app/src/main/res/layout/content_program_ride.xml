@@ -29,13 +29,13 @@
                                          android:layout_alignParentBottom="true"
                                          android:layout_gravity="bottom"
                                          android:layout_marginTop="55dp"
-                                         app:ms_activeStepColor="@color/white_snow"
-                                         app:ms_backButtonColor="@color/white_snow"
+                                         app:ms_activeStepColor="@color/white"
+                                         app:ms_backButtonColor="@color/white"
                                          app:ms_backButtonText="@string/program_ride_back"
-                                         app:ms_completeButtonColor="@color/white_snow"
+                                         app:ms_completeButtonColor="@color/white"
                                          app:ms_completeButtonText="@string/program_ride_continue"
-                                         app:ms_inactiveStepColor="@color/white_snow"
-                                         app:ms_nextButtonColor="@color/white_snow"
+                                         app:ms_inactiveStepColor="@color/white"
+                                         app:ms_nextButtonColor="@color/white"
                                          app:ms_nextButtonText="@string/program_ride_next"
                                          app:ms_stepperType="dots"/>
 </LinearLayout>

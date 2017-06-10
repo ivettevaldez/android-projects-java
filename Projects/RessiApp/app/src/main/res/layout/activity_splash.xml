@@ -32,6 +32,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="@string/splash_copyright"
-        android:textColor="@color/hint_grey"/>
+        android:textColor="@color/steel_grey_50"/>
 
 </RelativeLayout>
