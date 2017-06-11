@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:background="@color/white"
               android:orientation="vertical"
-              tools:context="com.silvia_valdez.ressi_app.views.fragments.ScheduleFragment">
+              tools:context="com.silvia_valdez.ressi.views.fragments.ScheduleFragment">
 
     <TextView
         android:id="@+id/schedule_text_info"

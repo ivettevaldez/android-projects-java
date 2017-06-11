@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context="com.silvia_valdez.ressi_app.views.activities.ProgramRideActivity">
+    tools:context="com.silvia_valdez.ressi.views.activities.ProgramRideActivity">
 
     <TextView
         android:id="@+id/route_text_info"
