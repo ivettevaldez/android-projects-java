@@ -129,8 +129,7 @@ public class DashboardActivity extends AppCompatActivity implements RideFragment
 
     public void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
-//            getSupportActionBar().setTitle(title);
-            UtilHelper.changeActionBarTextColor(mContext, getSupportActionBar(), title);
+            UtilHelper.setActionBarTitle(DashboardActivity.this, title);
         }
     }
 

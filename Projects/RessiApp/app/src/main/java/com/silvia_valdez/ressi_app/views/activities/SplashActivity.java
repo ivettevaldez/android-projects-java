@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.silvia_valdez.ressi_app.R;
+import com.silvia_valdez.ressi_app.helpers.TypefaceHelper;
 
 public class SplashActivity extends Activity {
 
@@ -17,7 +18,14 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+        setUpTypefaces();
         waitAMoment();
+    }
+
+    private void setUpTypefaces() {
+        // Global typeface.
+        TypefaceHelper typefaceHelper = new TypefaceHelper(SplashActivity.this);
+        typefaceHelper.overrideAllTypefaces();
     }
 
     private void waitAMoment() {

@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.silvia_valdez.ressi_app.R;
 import com.silvia_valdez.ressi_app.helpers.UtilHelper;
 
-public class SignUpActivity extends AppCompatActivity {
+public class ResetPasswordActivity extends AppCompatActivity {
 
     private Context mContext;
 
@@ -15,7 +15,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_reset_password);
 
         initVariables();
         setUpActionBar();
@@ -26,8 +26,8 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void setUpActionBar() {
-        String activityTitle = getString(R.string.sign_up_activity_title);
-        UtilHelper.setActionBarTitle(SignUpActivity.this, activityTitle);
+        String activityTitle = getString(R.string.reset_pass_activity_title);
+        UtilHelper.setActionBarTitle(ResetPasswordActivity.this, activityTitle);
     }
 
 }

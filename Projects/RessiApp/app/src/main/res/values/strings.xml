@@ -11,11 +11,11 @@
 
     <!-- MESSAGES -->
     <!-- Error -->
-    <string name="error_invalid_email">Este email es inválido</string>
-    <string name="error_invalid_password">El password es muy corto</string>
-    <string name="error_incorrect_password">El password es incorrecto</string>
+    <string name="error_invalid_email">Email inválido</string>
+    <string name="error_invalid_password">Contraseña muy corta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
     <string name="error_field_required">Este campo es requerido</string>
-    <string name="error_no_chart_data">No hay información disponible.</string>
+    <string name="error_no_chart_data">No hay información disponible</string>
 
     <string name="error_invalid_access_token">Invalid access token</string>
     <string name="error_unauthorized_access_token">Unauthorized access token</string>
@@ -65,6 +65,10 @@
 
     <!-- SignUpActivity -->
     <string name="sign_up_activity_title">Registrarse</string>
+
+
+    <!-- SignUpActivity -->
+    <string name="reset_pass_activity_title">Cambiar contraseña</string>
 
 
     <!-- DashboardFragment -->

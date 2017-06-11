@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.LocationManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -22,6 +23,7 @@ public class UtilHelper {
 
     private static Toast mToast;
 
+
     public static void showToast(Context context, String message) {
         if (mToast != null) {
             mToast.cancel();
@@ -30,10 +32,20 @@ public class UtilHelper {
         mToast.show();
     }
 
-    public static void changeActionBarTextColor(Context context, ActionBar actionBar, String title) {
+    public static void setActionBarTitle(AppCompatActivity activity, String title) {
+        ActionBar actionBar = activity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setTitle(title);
+        }
+    }
+
+    public static void setActionBarTitleColor(Context context, ActionBar actionBar, String title) {
+        // Set a title
         SpannableString spannableString = new SpannableString(title);
-        spannableString.setSpan(new ForegroundColorSpan(
-                        ContextCompat.getColor(context, R.color.charcoal_grey)), 0, title.length(),
+        // Also set a text color
+        spannableString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(context, R.color.charcoal_grey)),
+                0,
+                title.length(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         if (actionBar != null) {
             actionBar.setTitle(spannableString);

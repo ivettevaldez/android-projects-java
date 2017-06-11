@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.silvia_valdez.ressi_app.views.activities.SplashActivity"
+            android:name=".views.activities.SplashActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
@@ -32,28 +32,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.silvia_valdez.ressi_app.views.activities.LoginActivity"
+            android:name=".views.activities.LoginActivity"
             android:configChanges="orientation"
             android:label="@string/login_activity_title"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.silvia_valdez.ressi_app.views.activities.SignUpActivity"/>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".views.activities.SignUpActivity"/>
         <activity
-            android:name="com.silvia_valdez.ressi_app.views.activities.DashboardActivity"
+            android:name=".views.activities.DashboardActivity"
             android:configChanges="orientation"
             android:label="@string/dashboard_fragment_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name="com.silvia_valdez.ressi_app.views.activities.IntroActivity"
+            android:name=".views.activities.IntroActivity"
             android:configChanges="orientation"
             android:label="@string/intro_activity_title"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
-            android:name="com.silvia_valdez.ressi_app.views.activities.ProgramRideActivity"
+            android:name=".views.activities.ProgramRideActivity"
             android:configChanges="orientation"
             android:label="@string/program_ride_activity_title"
             android:screenOrientation="portrait"
@@ -79,6 +79,8 @@
             android:name="com.google.android.maps"
             android:required="true"/>
 
+        <activity android:name=".views.activities.ResetPasswordActivity">
+        </activity>
     </application>
 
 </manifest>

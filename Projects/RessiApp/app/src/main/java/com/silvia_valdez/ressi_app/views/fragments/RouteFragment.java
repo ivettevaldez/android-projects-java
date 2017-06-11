@@ -32,7 +32,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.silvia_valdez.ressi_app.R;
-import com.silvia_valdez.ressi_app.helpers.FontHelper;
+import com.silvia_valdez.ressi_app.helpers.TypefaceHelper;
 import com.silvia_valdez.ressi_app.helpers.RequestPermissionsHelper;
 import com.silvia_valdez.ressi_app.helpers.UtilHelper;
 import com.silvia_valdez.ressi_app.services.HttpClientService;
@@ -143,9 +143,9 @@ public class RouteFragment extends Fragment implements Step, OnMapReadyCallback,
 
     private void setUpFonts(View rootView) {
         // Setup Fonts.
-        FontHelper fontHelper = new FontHelper(mContext);
+        TypefaceHelper typefaceHelper = new TypefaceHelper(getActivity());
 
-        Typeface medium = fontHelper.getRobotoMedium();
+        Typeface medium = typefaceHelper.getRobotoMedium();
 
         TextView textInstructions = (TextView) rootView.findViewById(R.id.route_text_info);
         textInstructions.setTypeface(medium);

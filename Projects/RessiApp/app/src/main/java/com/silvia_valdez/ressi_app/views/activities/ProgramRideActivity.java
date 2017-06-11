@@ -86,8 +86,7 @@ public class ProgramRideActivity extends AppCompatActivity implements Navigation
 
     public void setActionBarTitle(String title) {
         if (getSupportActionBar() != null) {
-//            getSupportActionBar().setTitle(title);
-            UtilHelper.changeActionBarTextColor(mContext, getSupportActionBar(), title);
+            UtilHelper.setActionBarTitle(ProgramRideActivity.this, title);
         }
     }
 

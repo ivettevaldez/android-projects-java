@@ -29,7 +29,7 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.silvia_valdez.ressi_app.R;
-import com.silvia_valdez.ressi_app.helpers.FontHelper;
+import com.silvia_valdez.ressi_app.helpers.TypefaceHelper;
 import com.silvia_valdez.ressi_app.helpers.SessionManager;
 import com.silvia_valdez.ressi_app.services.DashboardService;
 import com.silvia_valdez.ressi_app.services.HttpClientService;
@@ -156,10 +156,10 @@ public class DashboardFragment extends Fragment implements IDashboardServiceDele
 
     private void setUpFonts(View rootView) {
         // Setup Fonts.
-        FontHelper fontHelper = new FontHelper(mContext);
+        TypefaceHelper typefaceHelper = new TypefaceHelper(getActivity());
 
-        Typeface light = fontHelper.getRobotoLight();
-        Typeface medium = fontHelper.getRobotoMedium();
+        Typeface light = typefaceHelper.getRobotoLight();
+        Typeface medium = typefaceHelper.getRobotoMedium();
 
         TextView textHistory = (TextView) rootView.findViewById(R.id.dashboard_frag_text_history);
         TextView textPointsLabel = (TextView) rootView.findViewById(R.id.dashboard_frag_text_points_label);

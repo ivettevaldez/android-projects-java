@@ -16,7 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.silvia_valdez.ressi_app.R;
-import com.silvia_valdez.ressi_app.helpers.FontHelper;
+import com.silvia_valdez.ressi_app.helpers.TypefaceHelper;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
@@ -83,9 +83,9 @@ public class QuantitiesFragment extends Fragment implements Step {
 
     private void setUpFonts(View rootView) {
         // Setup Fonts.
-        FontHelper fontHelper = new FontHelper(mContext);
+        TypefaceHelper typefaceHelper = new TypefaceHelper(getActivity());
 
-        Typeface medium = fontHelper.getRobotoMedium();
+        Typeface medium = typefaceHelper.getRobotoMedium();
 
         TextView textInstructions = (TextView) rootView.findViewById(R.id.quantities_text_info);
         textInstructions.setTypeface(medium);
