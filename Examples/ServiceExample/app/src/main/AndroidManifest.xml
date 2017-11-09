@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.silviavaldez.serviceexample">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".views.activities.MainActivity"
+                  android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Declaring background service to send Location and GPS events. -->
+        <service
+            android:name=".services.background.BackgroundService"
+            android:enabled="true"
+            android:process=":location_service"/>
+
+        <!-- Declaring broadcast receiver for the ALARM (WAKE_UP) event. -->
+        <receiver
+            android:name=".services.background.receivers.WakeUpReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.silviavaldez.serviceexample.WAKE_UP_ACTION"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- Declaring broadcast receiver for the ALARM (SLEEP) event. -->
+        <receiver
+            android:name=".services.background.receivers.SleepReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.silviavaldez.serviceexample.SLEEP_ACTION"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
