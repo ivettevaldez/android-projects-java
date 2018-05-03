@@ -2,6 +2,25 @@
 
     <string name="app_name">FinTech</string>
 
-    <string name="dummy_content">Hackathon ConCrédito 2018</string>
+    <!-- Actions -->
+    <string name="action_sign_in">Iniciar sesión</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_user">Este usuario es inválido</string>
+    <string name="error_invalid_password">Contraseña demasiado corta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+
+
+    <!-- Splash -->
+    <string name="splash_copyright">Hackathon ConCrédito 2018</string>
+
+    <!-- Login -->
+    <string name="login_title">Iniciar sesión</string>
+    <string name="login_email">Usuario</string>
+    <string name="login_password">Contraseña</string>
+    <string name="permission_rationale_contacts">"Los permisos de contactos son necesarios para
+        proporcionarautocompletado de emails."
+    </string>
 
 </resources>

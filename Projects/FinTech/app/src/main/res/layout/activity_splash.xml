@@ -45,7 +45,7 @@
         android:layout_alignParentBottom="true"
         android:gravity="center"
         android:keepScreenOn="true"
-        android:text="@string/dummy_content" />
+        android:text="@string/splash_copyright" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
