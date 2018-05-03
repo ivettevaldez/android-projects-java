@@ -4,6 +4,9 @@
 
     <!-- Actions -->
     <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_settings">Configuración</string>
+    <string name="action_open_drawer">Abrir navigation drawer</string>
+    <string name="action_close_drawer">Cerrar navigation drawer</string>
 
     <!-- Permission rationale -->
     <string name="permission_rationale_contacts">"Los permisos de contactos son necesarios para
@@ -27,6 +30,19 @@
 
     <!-- Dashboard -->
     <string name="dashboard_title">Dashboard</string>
-    <string name="dashboard_content">Hello Hackathon!</string>
+    <string name="dashboard_content">¡Hola, Hackathon!</string>
+
+    <!-- Main (Navigation) -->
+    <string name="main_title">Dashboard</string>
+    <string name="nav_header_title">Silvia Valdez</string>
+    <string name="nav_header_subtitle">silvia.valdez.e@gmail.com</string>
+    <string name="nav_header_desc">Header</string>
+    <string name="header_communicate">Comunícate</string>
+    <string name="option_import">Importar</string>
+    <string name="option_gallery">Galería</string>
+    <string name="option_slideshow">Presentación</string>
+    <string name="option_tools">Herramientas</string>
+    <string name="option_share">Compartir</string>
+    <string name="option_send">Enviar</string>
 
 </resources>

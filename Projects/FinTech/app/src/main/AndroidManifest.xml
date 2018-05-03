@@ -41,6 +41,13 @@
             android:label="@string/dashboard_title"
             android:screenOrientation="portrait" />
 
+        <!-- Main Activity -->
+        <activity
+            android:name=".views.activities.MainActivity"
+            android:label="@string/main_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
