@@ -5,6 +5,11 @@
     <!-- Actions -->
     <string name="action_sign_in">Iniciar sesión</string>
 
+    <!-- Permission rationale -->
+    <string name="permission_rationale_contacts">"Los permisos de contactos son necesarios para
+        proporcionarautocompletado de emails."
+    </string>
+
     <!-- Errors -->
     <string name="error_invalid_user">Este usuario es inválido</string>
     <string name="error_invalid_password">Contraseña demasiado corta</string>
@@ -19,8 +24,9 @@
     <string name="login_title">Iniciar sesión</string>
     <string name="login_email">Usuario</string>
     <string name="login_password">Contraseña</string>
-    <string name="permission_rationale_contacts">"Los permisos de contactos son necesarios para
-        proporcionarautocompletado de emails."
-    </string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="dashboard_content">Hello Hackathon!</string>
 
 </resources>

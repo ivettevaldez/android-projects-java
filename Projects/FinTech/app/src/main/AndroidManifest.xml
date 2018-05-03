@@ -35,6 +35,12 @@
             android:label="@string/login_title"
             android:screenOrientation="portrait" />
 
+        <!-- Dashboard Activity -->
+        <activity
+            android:name=".views.activities.DashboardActivity"
+            android:label="@string/dashboard_title"
+            android:screenOrientation="portrait" />
+
     </application>
 
 </manifest>
