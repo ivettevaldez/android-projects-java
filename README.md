@@ -1,2 +1,2 @@
-# AndroidProjects-Java
-All related to Android (Java) projects.
+# Android Projects (Java)
+All related to Android with Java.
